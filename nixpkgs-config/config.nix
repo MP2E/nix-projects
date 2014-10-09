@@ -36,17 +36,19 @@ in
     # have the settings I want.
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
       extension = se : su : rec {
-        xmonad  	     	= haskellPackage se "xmonad";
+        xmonad 	     	= haskellPackage se "xmonad";
         xmonadContrib	= haskellPackage se "xmonad-contrib";
-        yi                = haskellPackage se "yi";
-        yiContrib         = haskellPackage se "yi-contrib";
+        ooPrototypes    = haskellPackage se "oo-prototypes";
+        wordTrie        = haskellPackage se "word-trie";
+        yi              = haskellPackage se "yi";
+        yiContrib       = haskellPackage se "yi-contrib";
+        yiRope          = haskellPackage se "yi-rope";
+        yiLanguage      = haskellPackage se "yi-language";
         SDL2		= se.callPackage /home/cray/hsSDL2 {};
       };
     });
   
     # Derive package sets for every version of GHC I'm interested in.
-    myHaskellPackages_ghc742 = ownHaskellPackages haskellPackages_ghc742;
-    myHaskellPackages_ghc763 = ownHaskellPackages haskellPackages_ghc763;
     myHaskellPackages_ghc783 = ownHaskellPackages haskellPackages_ghc783;
     myHaskellPackages_ghc783_profiling =
       ownHaskellPackages haskellPackages_ghc783_profiling;
