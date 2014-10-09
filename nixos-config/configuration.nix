@@ -10,6 +10,13 @@
       /etc/nixos/hardware-configuration.nix
     ];
 
+  # custom mount points
+  fileSystems."/mnt/vault" =
+    { device = "/dev/disk/by-label/TheVault";
+      fsType = "ntfs";
+      options = "defaults";
+    };
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
