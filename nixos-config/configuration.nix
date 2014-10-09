@@ -81,7 +81,7 @@
     myHaskellPackages.xmonad
     myHaskellPackages.xmobar
     myHaskellPackages.xmonadContrib
-  ]; 
+  ];
 
   # List services that you want to enable:
 
@@ -100,8 +100,8 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.kdm.enable = true;
   # services.xserver.desktopManager.kde4.enable = true;
-  
-  services.xserver.windowManager.xmonad.haskellPackages = pkgs.myHaskellPackages; 
+
+  services.xserver.windowManager.xmonad.haskellPackages = pkgs.myHaskellPackages;
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";

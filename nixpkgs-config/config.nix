@@ -26,12 +26,12 @@ in
       ghcBinary = self.haskellPackages.ghcPlain;
       prefFun = self.haskell.ghcHEADPrefs;
     };
-  
+
     # Define different GHC HEAD configurations.
     haskellPackages_ghcHEAD = recurseIntoAttrs packages_ghcHEAD.highPrio;
     haskellPackages_ghcHEAD_profiling = recurseIntoAttrs packages_ghcHEAD.profiling;
     haskellPackages_ghcHEAD_no_profiling = recurseIntoAttrs packages_ghcHEAD.noProfiling;
-  
+
     # Haskell packages I want to use that reside out of nixpkgs or don't
     # have the settings I want.
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
@@ -47,22 +47,22 @@ in
         SDL2		= se.callPackage /home/cray/hsSDL2 {};
       };
     });
-  
+
     # Derive package sets for every version of GHC I'm interested in.
     myHaskellPackages_ghc783 = ownHaskellPackages haskellPackages_ghc783;
     myHaskellPackages_ghc783_profiling =
       ownHaskellPackages haskellPackages_ghc783_profiling;
-  
+
     myHaskellPackages = myHaskellPackages_ghc783;
     myHaskellPackages_profiling = myHaskellPackages_ghc783_profiling;
-  
+
     # Packages that aren't Haskell packages.
-  
+
     sixpair = normalPackage "sixpair";
     doomseeker = normalPackage "doomseeker";
-  
+
     # Package overrides
-  
+
     SDL_mixer = self.SDL_mixer.override { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
   };
 }
