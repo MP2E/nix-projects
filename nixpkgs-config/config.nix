@@ -16,6 +16,10 @@ let
   normalPackage32 = p: callPackage_i686 (normalProjectDir + p) {};
   normalPackageS = s: p: s.callPackage (normalProjectDir + p) {};
   normalPackageC = s: p: v: s.callPackage (normalProjectDir + p) v;
+
+  # Custom dev package function
+  devPackage = p: callPackage (normalProjectDir + p + "/master.nix") {};
+
 in
 { allowUnfree = true;
   ffmpeg.x11grab = true;
@@ -60,6 +64,12 @@ in
 
     sixpair = normalPackage "sixpair";
     doomseeker = normalPackage "doomseeker";
+    odamex = normalPackage "odamex";
+
+    # Development versions of packages
+
+    odamexMaster = devPackage "odamex";
+    eternityMaster = devPackage "eternity-engine";
 
     # Package overrides
 
