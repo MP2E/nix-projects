@@ -42,6 +42,7 @@ in
       extension = se : su : rec {
         xmonad 	     	= haskellPackage se "xmonad";
         xmonadContrib	= haskellPackage se "xmonad-contrib";
+        dynamicState    = haskellPackage se "dynamic-state";
         ooPrototypes    = haskellPackage se "oo-prototypes";
         wordTrie        = haskellPackage se "word-trie";
         yi              = haskellPackage se "yi";
