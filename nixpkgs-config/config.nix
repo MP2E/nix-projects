@@ -29,6 +29,10 @@ in
       ghcPath = /home/cray/ghc;
       ghcBinary = self.haskellPackages.ghcPlain;
       prefFun = self.haskell.ghcHEADPrefs;
+      extraArgs = {
+        happy = pkgs.haskellPackages_ghc783.happy;
+        alex = pkgs.haskellPackages_ghc783.alex;
+      };
     };
 
     # Define different GHC HEAD configurations.

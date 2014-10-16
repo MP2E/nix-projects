@@ -73,6 +73,7 @@
     irssi
     rxvt_unicode
     chromium
+    cups
     dmenu
     vim
     xfontsel
