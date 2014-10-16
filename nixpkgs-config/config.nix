@@ -45,14 +45,8 @@ in
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
       extension = se : su : rec {
         xmonad 	     	= haskellPackage se "xmonad";
+        xmobar 	     	= haskellPackage se "xmobar";
         xmonadContrib	= haskellPackage se "xmonad-contrib";
-        dynamicState    = haskellPackage se "dynamic-state";
-        ooPrototypes    = haskellPackage se "oo-prototypes";
-        wordTrie        = haskellPackage se "word-trie";
-        yi              = haskellPackage se "yi";
-        yiContrib       = haskellPackage se "yi-contrib";
-        yiRope          = haskellPackage se "yi-rope";
-        yiLanguage      = haskellPackage se "yi-language";
         SDL2		= se.callPackage /home/cray/hsSDL2 {};
       };
     });
