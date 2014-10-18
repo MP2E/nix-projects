@@ -45,7 +45,6 @@ in
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
       extension = se : su : rec {
         xmonad 	     	= haskellPackage se "xmonad";
-        xmobar 	     	= haskellPackage se "xmobar";
         xmonadContrib	= haskellPackage se "xmonad-contrib";
         SDL2		= se.callPackage /home/cray/hsSDL2 {};
       };
@@ -59,19 +58,22 @@ in
     myHaskellPackages = myHaskellPackages_ghc783;
     myHaskellPackages_profiling = myHaskellPackages_ghc783_profiling;
 
-    # Packages that aren't Haskell packages.
+    ghcDevEnv = self.haskellPackages_ghcHEAD.ghcWithPackages (self : [
+         self.lens
+         self.lensAeson
+         self.attoparsec
+     ]);
 
+    # Packages that aren't Haskell packages.
     sixpair = normalPackage "sixpair";
     doomseeker = normalPackage "doomseeker";
     odamex = normalPackage "odamex";
 
     # Development versions of packages
-
     odamexMaster = devPackage "odamex";
     eternityMaster = devPackage "eternity-engine";
 
     # Package overrides
-
     SDL_mixer = self.SDL_mixer.override { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
   };
 }
