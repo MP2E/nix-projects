@@ -45,7 +45,6 @@
         extension = se : su : rec {
               xmonad = se.callPackage /home/cray/nix-projects/haskell-projects/xmonad {};
               xmonadContrib = se.callPackage /home/cray/nix-projects/haskell-projects/xmonad-contrib {};
-              xmobar = se.callPackage /home/cray/nix-projects/haskell-projects/xmobar {};
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskellPackages_ghc783;
