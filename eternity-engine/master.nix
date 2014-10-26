@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     -DCMAKE_BUILD_TYPE=Release
   '';
 
-  buildInputs = [ stdenv cmake mesa SDL SDL_mixer SDL_net ];
+  buildInputs = [ cmake mesa SDL SDL_mixer SDL_net ];
 
   enableParallelBuilding = true;
 

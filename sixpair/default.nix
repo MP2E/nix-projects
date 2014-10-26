@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
   strip -s $out/bin/sixpair
   '';
 
-  buildInputs = [ stdenv libusb ];
+  buildInputs = [ libusb ];
 
   meta = {
     homepage = http://sixpair.org/;

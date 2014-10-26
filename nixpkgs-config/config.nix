@@ -58,12 +58,6 @@ in
     myHaskellPackages = myHaskellPackages_ghc783;
     myHaskellPackages_profiling = myHaskellPackages_ghc783_profiling;
 
-    ghcDevEnv = self.haskellPackages_ghcHEAD.ghcWithPackages (self : [
-         self.lens
-         self.lensAeson
-         self.attoparsec
-     ]);
-
     # Packages that aren't Haskell packages.
     sixpair = normalPackage "sixpair";
     doomseeker = normalPackage "doomseeker";
@@ -72,6 +66,7 @@ in
     # Development versions of packages
     odamexMaster = devPackage "odamex";
     eternityMaster = devPackage "eternity-engine";
+    chocolateDoomMaster = devPackage "chocolate-doom";
 
     # Package overrides
     SDL_mixer = self.SDL_mixer.override { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };

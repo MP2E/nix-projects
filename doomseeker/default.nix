@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     -DCMAKE_BUILD_TYPE=Release
   '';
 
-  buildInputs = [ stdenv cmake pkgconfig qt4 zlib bzip2 ];
+  buildInputs = [ cmake pkgconfig qt4 zlib bzip2 ];
 
   enableParallelBuilding = true;
 
