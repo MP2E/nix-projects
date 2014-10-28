@@ -1,0 +1,13 @@
+diff --git a/Source/Core/VideoCommon/CommandProcessor.cpp b/Source/Core/VideoCommon/CommandProcessor.cpp
+index 8af2af9..b3bf20a 100644
+--- a/Source/Core/VideoCommon/CommandProcessor.cpp
++++ b/Source/Core/VideoCommon/CommandProcessor.cpp
+@@ -473,7 +473,7 @@ void SetCpStatusRegister()
+ 	// Here always there is one fifo attached to the GPU
+ 	m_CPStatusReg.Breakpoint = fifo.bFF_Breakpoint;
+ 	m_CPStatusReg.ReadIdle = !fifo.CPReadWriteDistance ||  AtBreakpoint() || (fifo.CPReadPointer == fifo.CPWritePointer);
+-	m_CPStatusReg.CommandIdle = !fifo.CPReadWriteDistance || AtBreakpoint() || !fifo.bFF_GPReadEnable;
++	m_CPStatusReg.CommandIdle = !fifo.CPReadWriteDistance || !fifo.bFF_GPReadEnable;
+ 	m_CPStatusReg.UnderflowLoWatermark = fifo.bFF_LoWatermark;
+ 	m_CPStatusReg.OverflowHiWatermark = fifo.bFF_HiWatermark;
+ 

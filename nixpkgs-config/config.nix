@@ -67,6 +67,7 @@ in
     odamexMaster = devPackage "odamex";
     eternityMaster = devPackage "eternity-engine";
     chocolateDoomMaster = devPackage "chocolate-doom";
+    dolphinEmuMaster = devPackage "dolphin-emu";
 
     # Package overrides
     SDL_mixer = self.SDL_mixer.override { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
