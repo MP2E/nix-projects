@@ -60,8 +60,6 @@ in
 
     # Packages that aren't Haskell packages.
     sixpair = normalPackage "sixpair";
-    doomseeker = normalPackage "doomseeker";
-    odamex = normalPackage "odamex";
 
     # Development versions of packages
     odamexMaster = devPackage "odamex";
