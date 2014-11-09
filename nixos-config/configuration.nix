@@ -48,7 +48,7 @@
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskellPackages_ghc783;
-      bluez = pkgs.bluez5;
+      bluez = pkgs.bluez5.override { enableWiimote = true; };
     };
     chromium = {
       enablePepperFlash = true;
