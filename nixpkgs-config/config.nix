@@ -19,6 +19,7 @@ let
 
   # Custom dev package function
   devPackage = p: callPackage (normalProjectDir + p + "/master.nix") {};
+  devPackageC = s: p: v: s.callPackage (normalProjectDir + p + "/master.nix") v;
 
 in
 { allowUnfree = true;
@@ -65,7 +66,7 @@ in
     odamexMaster = devPackage "odamex";
     eternityMaster = devPackage "eternity-engine";
     chocolateDoomMaster = devPackage "chocolate-doom";
-    dolphinEmuMaster = devPackage "dolphin-emu";
+    dolphinEmuMaster = devPackageC self "dolphin-emu" { pulseaudio = pkgs.pulseaudio; };
 
     # Package overrides
     SDL_mixer = self.SDL_mixer.override { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
