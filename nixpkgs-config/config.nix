@@ -61,6 +61,8 @@ in
 
     # Packages that aren't Haskell packages.
     sixpair = normalPackage "sixpair";
+    zandronum = normalPackage "zandronum";
+    fmod_4_24_16 = normalPackage "fmod";
 
     # Development versions of packages
     odamexMaster = devPackage "odamex";
