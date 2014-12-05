@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, cmake, SDL, nasm, zlib, flac, fmod_4_24_16, libjpeg, fetchhg, openssl, mesa, freeglut, pkgconfig }:
+{ stdenv, fetchurl, cmake, SDL, nasm, zlib, flac, fmod_4_24_16, libjpeg, fetchhg, openssl, mesa, pkgconfig }:
 
 stdenv.mkDerivation {
   name = "zandronum-1.3";
@@ -9,7 +9,7 @@ stdenv.mkDerivation {
 #   sha256 = "16vmysiyz8ar1sswyiyvn4yk2z3jf3wkyq2qn1gflp2936xj9707";
 # };
 
-  buildInputs = [ cmake nasm SDL zlib flac fmod_4_24_16 libjpeg openssl mesa freeglut pkgconfig ];
+  buildInputs = [ cmake nasm SDL zlib flac fmod_4_24_16 libjpeg openssl mesa pkgconfig ];
 
   cmakeFlags = [ "-DSDL_INCLUDE_DIR=${SDL}/include/SDL -DFMOD_LIBRARY=${fmod_4_24_16}/lib/libfmodex64-4.24.16.so -DFMOD_INCLUDE_DIR=${fmod_4_24_16}/include/fmodex" ];
 
