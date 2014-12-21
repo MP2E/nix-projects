@@ -63,11 +63,15 @@ in
     sixpair = normalPackage "sixpair";
     zandronum = normalPackage "zandronum";
     fmod_4_24_16 = normalPackage "fmod";
+    reposurgeon = normalPackage "reposurgeon";
+    nestopia = normalPackage "nestopia";
 
     # Development versions of packages
     odamexMaster = devPackage "odamex";
     eternityMaster = devPackage "eternity-engine";
     chocolateDoomMaster = devPackage "chocolate-doom";
+    restrife = devPackage "restrife";
+    nestopiaMaster = devPackage "nestopia";
     dolphinEmuMaster = devPackageC self "dolphin-emu" { pulseaudio = pkgs.pulseaudio; };
 
     # Package overrides
