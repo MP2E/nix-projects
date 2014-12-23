@@ -64,7 +64,6 @@ in
     zandronum = normalPackage "zandronum";
     fmod_4_24_16 = normalPackage "fmod";
     reposurgeon = normalPackage "reposurgeon";
-    nestopia = normalPackage "nestopia";
 
     # Development versions of packages
     odamexMaster = devPackage "odamex";
