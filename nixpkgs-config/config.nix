@@ -31,8 +31,8 @@ in
       ghcBinary = self.haskellPackages.ghcPlain;
       prefFun = self.haskell.ghcHEADPrefs;
       extraArgs = {
-        happy = pkgs.haskellPackages_ghc783.happy;
-        alex = pkgs.haskellPackages_ghc783.alex;
+        happy = pkgs.haskellPackages_ghc784.happy;
+        alex = pkgs.haskellPackages_ghc784.alex;
       };
     };
 
@@ -52,12 +52,12 @@ in
     });
 
     # Derive package sets for every version of GHC I'm interested in.
-    myHaskellPackages_ghc783 = ownHaskellPackages haskellPackages_ghc783;
-    myHaskellPackages_ghc783_profiling =
-      ownHaskellPackages haskellPackages_ghc783_profiling;
+    myHaskellPackages_ghc784 = ownHaskellPackages haskellPackages_ghc784;
+    myHaskellPackages_ghc784_profiling =
+      ownHaskellPackages haskellPackages_ghc784_profiling;
 
-    myHaskellPackages = myHaskellPackages_ghc783;
-    myHaskellPackages_profiling = myHaskellPackages_ghc783_profiling;
+    myHaskellPackages = myHaskellPackages_ghc784;
+    myHaskellPackages_profiling = myHaskellPackages_ghc784_profiling;
 
     # Packages that aren't Haskell packages.
     sixpair = normalPackage "sixpair";

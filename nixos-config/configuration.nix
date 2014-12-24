@@ -47,7 +47,7 @@
               xmonadContrib = se.callPackage /home/cray/nix-projects/haskell-projects/xmonad-contrib {};
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskellPackages_ghc783;
+      myHaskellPackages = ownHaskellPackages pkgs.haskellPackages_ghc784;
       bluez = pkgs.bluez5.override { enableWiimote = true; };
     };
     chromium = {
@@ -79,11 +79,11 @@
     xlsfonts
     xclip
     bluez5
-    haskellPackages_ghc783.ghc
-    haskellPackages_ghc783.cabalInstall
-    haskellPackages_ghc783.cabalBounds
-    haskellPackages_ghc783.lens
-    haskellPackages_ghc783.lensAeson
+    haskellPackages_ghc784.ghc
+    haskellPackages_ghc784.cabalInstall
+    haskellPackages_ghc784.cabalBounds
+    haskellPackages_ghc784.lens
+    haskellPackages_ghc784.lensAeson
     # xmonad and friends are overwritten by my git versions :)
     myHaskellPackages.xmonad
     myHaskellPackages.xmobar
