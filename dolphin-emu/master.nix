@@ -4,11 +4,11 @@
 , pulseaudio ? null }:
 
 stdenv.mkDerivation rec {
-  name = "dolphin-emu-20141225";
+  name = "dolphin-emu-20150103";
   src = fetchgit {
     url = git://github.com/dolphin-emu/dolphin.git;
-    rev = "5526b3932018cfd9245fe76848861b8a0ceae3bf";
-    sha256 = "1qix29sl2wd4zqqlg6p6csab6pyvysll37k59rqm5z8yiq5b188s";
+    rev = "03f716e651128a2da01f6afdd26545fafdd49971";
+    sha256 = "01dq5552wpfn7dvfvdxxzfxn1z08abqwpm4gf33c081bhhbsyny6";
     fetchSubmodules = false;
   };
 
@@ -26,13 +26,13 @@ stdenv.mkDerivation rec {
                   gettext libpthreadstubs libXrandr libXext readline openal
                   git libXdmcp portaudio SDL wxGTK30 pulseaudio ];
 
-  patches = [ ./rogue-leader-fix.patch ];
-
   meta = {
     homepage = http://dolphin-emu.org/;
     description = "Gamecube/Wii/Triforce emulator for x86_64 and ARM";
     license = stdenv.lib.licenses.gpl2;
-    platforms = stdenv.lib.platforms.linux;
     maintainers = with stdenv.lib.maintainers; [ MP2E ];
+    # x86_32 is an unsupported platform.
+    # Enable generic build if you really want a JIT-less binary.
+    platforms = [ "x86_64-linux" ];
   };
 }
