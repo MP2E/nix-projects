@@ -40,14 +40,16 @@
   };
 
   nixpkgs.config = {
+    # needed for xmonad to find xmonadContrib
+    provideOldHaskellAttributeNames = true;
     packageOverrides = pkgs: rec {
       ownHaskellPackages = ver : pkgs.recurseIntoAttrs (ver.override {
-        extension = se : su : rec {
+        overrides = se : su : rec {
               xmonad = se.callPackage /home/cray/nix-projects/haskell-projects/xmonad {};
-              xmonadContrib = se.callPackage /home/cray/nix-projects/haskell-projects/xmonad-contrib {};
+              xmonad-contrib = se.callPackage /home/cray/nix-projects/haskell-projects/xmonad-contrib {};
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskellPackages_ghc784;
+      myHaskellPackages = ownHaskellPackages pkgs.haskellngPackages;
       bluez = pkgs.bluez5.override { enableWiimote = true; };
     };
     chromium = {
@@ -79,15 +81,6 @@
     xlsfonts
     xclip
     bluez5
-    haskellPackages_ghc784.ghc
-    haskellPackages_ghc784.cabalInstall
-    haskellPackages_ghc784.cabalBounds
-    haskellPackages_ghc784.lens
-    haskellPackages_ghc784.lensAeson
-    # xmonad and friends are overwritten by my git versions :)
-    myHaskellPackages.xmonad
-    myHaskellPackages.xmobar
-    myHaskellPackages.xmonadContrib
   ];
 
   # List services that you want to enable:

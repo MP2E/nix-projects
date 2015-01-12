@@ -25,36 +25,19 @@ in
 { allowUnfree = true;
   ffmpeg.x11grab = true;
   packageOverrides = self: rec {
-    # Define own GHC HEAD package pointing to local checkout.
-    packages_ghcHEAD = self.haskell.packages {
-      ghcPath = /home/cray/ghc;
-      ghcBinary = self.haskellPackages.ghcPlain;
-      prefFun = self.haskell.ghcHEADPrefs;
-      extraArgs = {
-        happy = pkgs.haskellPackages_ghc784.happy;
-        alex = pkgs.haskellPackages_ghc784.alex;
-      };
-    };
-
-    # Define different GHC HEAD configurations.
-    haskellPackages_ghcHEAD = recurseIntoAttrs packages_ghcHEAD.highPrio;
-    haskellPackages_ghcHEAD_profiling = recurseIntoAttrs packages_ghcHEAD.profiling;
-    haskellPackages_ghcHEAD_no_profiling = recurseIntoAttrs packages_ghcHEAD.noProfiling;
-
     # Haskell packages I want to use that reside out of nixpkgs or don't
     # have the settings I want.
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
-      extension = se : su : rec {
+      overrides = se : su : rec {
         xmonad 	     	= haskellPackage se "xmonad";
         xmonadContrib	= haskellPackage se "xmonad-contrib";
-        SDL2		= se.callPackage /home/cray/hsSDL2 {};
       };
     });
 
     # Derive package sets for every version of GHC I'm interested in.
-    myHaskellPackages_ghc784 = ownHaskellPackages haskellPackages_ghc784;
+    myHaskellPackages_ghc784 = ownHaskellPackages haskellngPackages_ghc784;
     myHaskellPackages_ghc784_profiling =
-      ownHaskellPackages haskellPackages_ghc784_profiling;
+      ownHaskellPackages haskellngPackages_ghc784_profiling;
 
     myHaskellPackages = myHaskellPackages_ghc784;
     myHaskellPackages_profiling = myHaskellPackages_ghc784_profiling;
