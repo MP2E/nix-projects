@@ -30,17 +30,13 @@ in
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
       overrides = se : su : rec {
         xmonad 	     	= haskellPackage se "xmonad";
-        xmonadContrib	= haskellPackage se "xmonad-contrib";
+        xmonad-contrib	= haskellPackage se "xmonad-contrib";
       };
     });
 
     # Derive package sets for every version of GHC I'm interested in.
-    myHaskellPackages_ghc784 = ownHaskellPackages haskellngPackages_ghc784;
-    myHaskellPackages_ghc784_profiling =
-      ownHaskellPackages haskellngPackages_ghc784_profiling;
-
-    myHaskellPackages = myHaskellPackages_ghc784;
-    myHaskellPackages_profiling = myHaskellPackages_ghc784_profiling;
+    # TODO: add profiling for haskell-ng
+    myHaskellPackages = ownHaskellPackages haskellngPackages;
 
     # Packages that aren't Haskell packages.
     sixpair = normalPackage "sixpair";

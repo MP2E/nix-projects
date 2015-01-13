@@ -50,6 +50,12 @@
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskellngPackages;
+      haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
+        attoparsec parsec aeson mtl transformers lens lens-aeson
+        text random vector stm comonad free total repa
+        cabal2nix hlint ghc-mod
+        xmonad xmonad-contrib xmobar
+      ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
     };
     chromium = {
@@ -81,6 +87,7 @@
     xlsfonts
     xclip
     bluez5
+    haskellEnv
   ];
 
   # List services that you want to enable:
