@@ -38,13 +38,13 @@ in
     # TODO: add profiling for haskell-ng
     myHaskellPackages = ownHaskellPackages haskellngPackages;
 
-
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
       text random vector stm comonad free total repa network HTTP
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes
       cabal2nix hlint ghc-mod
+      xmonad xmonad-contrib xmobar
     ]);
 
     # Packages that aren't Haskell packages.

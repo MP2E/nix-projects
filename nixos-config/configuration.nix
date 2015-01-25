@@ -50,9 +50,6 @@
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskellngPackages;
-      wmEnv = myHaskellPackages.ghcWithPackages (p: with p; [
-        xmonad xmonad-contrib xmobar
-      ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
     };
     chromium = {
@@ -84,7 +81,6 @@
     xlsfonts
     xclip
     bluez5
-    wmEnv
   ];
 
   # List services that you want to enable:
