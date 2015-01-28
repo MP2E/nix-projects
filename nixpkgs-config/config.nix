@@ -35,15 +35,20 @@ in
     });
 
     # Derive package sets for every version of GHC I'm interested in.
-    # TODO: add profiling for haskell-ng
-    myHaskellPackages = ownHaskellPackages haskellngPackages;
+
+    myHaskellPackages = ownHaskellPackages haskellngPackages_ghc7101;
+
+    haskellngPackages_ghc7101 = pkgs.haskell-ng.packages.ghc7101.override {
+      overrides = config.haskellPackageOverrides or (self: super: {});
+      provideOldAttributeNames = false;
+    };
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
       text random vector stm comonad free total repa network HTTP
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes
-      cabal2nix hlint ghc-mod
+      cabal2nix hlint ghc-mod cabal-install
       xmonad xmonad-contrib xmobar
     ]);
 

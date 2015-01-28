@@ -4,6 +4,8 @@
 
 { config, pkgs, ... }:
 
+with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkgs; };
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -40,16 +42,22 @@
   };
 
   nixpkgs.config = {
-    # needed for xmonad to find xmonadContrib
-    provideOldHaskellAttributeNames = true;
     packageOverrides = pkgs: rec {
       ownHaskellPackages = ver : pkgs.recurseIntoAttrs (ver.override {
         overrides = se : su : rec {
-              xmonad = se.callPackage /home/cray/nix-projects/haskell-projects/xmonad {};
-              xmonad-contrib = se.callPackage /home/cray/nix-projects/haskell-projects/xmonad-contrib {};
+              xmonad = se.callPackage ../haskell-projects/xmonad {};
+              xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
+              xmonad-extras = appendPatch su.xmonad-extras "/home/cray/nix-projects/haskell-projects/xmonad-extras/ghc-7.10.1.patch";
+              # setlocale requires base < 4.8
+              setlocale = doJailbreak su.setlocale;
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskellngPackages;
+      myHaskellPackages = ownHaskellPackages haskellngPackages_ghc7101;
+      haskellngPackages_ghc7101 = pkgs.haskell-ng.packages.ghc7101.override {
+        overrides = config.haskellPackageOverrides or (self: super: {});
+        # needs to be true for xmonad-contrib to be found
+        provideOldAttributeNames = true;
+      };
       bluez = pkgs.bluez5.override { enableWiimote = true; };
     };
     chromium = {
