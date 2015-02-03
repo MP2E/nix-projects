@@ -1,5 +1,6 @@
 { pkgs }:
 
+with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkgs; };
 with pkgs;
 let
   # Directories where I'll store extra packages.
@@ -47,8 +48,8 @@ in
       attoparsec parsec aeson mtl transformers lens lens-aeson
       text random vector stm comonad free total repa network HTTP
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
-      bytestring pipes
-      cabal2nix hlint ghc-mod cabal-install
+      bytestring pipes turtle foldl
+      cabal2nix hlint ghc-mod cabal-install hoogle
       xmonad xmonad-contrib xmobar
     ]);
 
