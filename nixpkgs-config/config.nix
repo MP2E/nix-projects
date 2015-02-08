@@ -32,6 +32,19 @@ in
       overrides = se : su : rec {
         xmonad 	     	= haskellPackage se "xmonad";
         xmonad-contrib	= haskellPackage se "xmonad-contrib";
+        xmobar          = haskellPackage se "xmobar";
+        # requires base < 4.8
+        dataenc         = doJailbreak su.dataenc;
+        setlocale       = doJailbreak su.setlocale;
+        # requires time <= 1.5
+        timezone-series = doJailbreak su.timezone-series;
+        timezone-olson  = doJailbreak su.timezone-olson;
+        # various GHC 7.10.x patches
+        hashed-storage  = appendPatch su.hashed-storage "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/hashed-storage-flexiblec.patch";
+        libmpd          = appendPatch su.libmpd "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/libmpd-time-update.patch";
+        foldl           = appendPatch su.foldl "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/foldl-prelude-hiding.patch";
+        # latest cabal2nix from git needed for GHC 7.10.x
+        cabal2nix       = self.callPackage /home/cray/cabal2nix/release.nix {};
       };
     });
 
@@ -46,10 +59,10 @@ in
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
-      text random vector stm comonad free total repa network HTTP
+      text random vector stm comonad free total network HTTP
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes turtle foldl
-      cabal2nix hlint ghc-mod cabal-install hoogle
+      cabal2nix hlint cabal-install hoogle
       xmonad xmonad-contrib xmobar
     ]);
 

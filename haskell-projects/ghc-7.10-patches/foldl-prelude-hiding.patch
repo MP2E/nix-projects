@@ -1,0 +1,12 @@
+diff -Naur foldl-1.0.7/src/Control/Foldl.hs foldl-1.0.7-patch/src/Control/Foldl.hs
+--- foldl-1.0.7/src/Control/Foldl.hs	2015-02-02 20:30:47.909459824 -0800
++++ foldl-1.0.7-patch/src/Control/Foldl.hs	2015-02-02 20:32:42.609899415 -0800
+@@ -119,6 +119,8 @@
+     , minimum
+     , elem
+     , notElem
++    , foldMap
++    , mconcat
+     )
+ 
+ {-| Efficient representation of a left fold that preserves the fold's step
