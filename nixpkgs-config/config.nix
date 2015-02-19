@@ -71,6 +71,8 @@ in
     zandronum = normalPackage "zandronum";
     fmod_4_24_16 = normalPackage "fmod";
     reposurgeon = normalPackage "reposurgeon";
+    doom64ex = normalPackage "doom64ex";
+    wadgen = normalPackage "wadgen";
 
     # Development versions of packages
     odamexMaster = devPackage "odamex";
