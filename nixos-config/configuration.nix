@@ -124,6 +124,8 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
+  services.virtualboxHost.enable = true;
+
   programs.zsh.enable = true;
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
 

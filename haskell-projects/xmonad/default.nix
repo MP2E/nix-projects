@@ -18,7 +18,6 @@ mkDerivation {
   patches = [
     ./xmonad_ghc_var_0.11.patch
   ];
-  doCheck = false;
   postInstall = ''
     shopt -s globstar
     mkdir -p $out/share/man/man1

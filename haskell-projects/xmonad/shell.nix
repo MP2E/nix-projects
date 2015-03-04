@@ -25,7 +25,6 @@ let pkg = haskellngPackages.callPackage
                patches = [
                  ./xmonad_ghc_var_0.11.patch
                ];
-               doCheck = false;
                homepage = "http://xmonad.org";
                description = "A tiling window manager";
                license = stdenv.lib.licenses.bsd3;
