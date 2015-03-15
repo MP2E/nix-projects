@@ -33,15 +33,25 @@ in
         xmonad 	     	= haskellPackage se "xmonad";
         xmonad-contrib	= haskellPackage se "xmonad-contrib";
         xmobar          = haskellPackage se "xmobar";
+        # Lens 4.8 is required for the new GHC 7.10 build
+        lens            = haskellPackage se "lens";
         # requires base < 4.8
         dataenc         = doJailbreak su.dataenc;
         setlocale       = doJailbreak su.setlocale;
+        # requires filepath < 1.4
+        Glob            = doJailbreak su.Glob;
+        # TypeRep now takes 4 arguments
+        hashable        = appendPatch su.hashable "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/hashable-typerep-fix.patch";
         # requires time <= 1.5
         timezone-series = doJailbreak su.timezone-series;
         timezone-olson  = doJailbreak su.timezone-olson;
         # various GHC 7.10.x patches
         hashed-storage  = appendPatch su.hashed-storage "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/hashed-storage-flexiblec.patch";
-        libmpd          = appendPatch su.libmpd "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/libmpd-time-update.patch";
+        ansi-wl-pprint  = appendPatch su.ansi-wl-pprint "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/ansi-wl-pprint-hiding.patch";
+        libmpd          = appendPatch su.libmpd         "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/libmpd-derive-applicative.patch";
+        # Test suites fail at the moment
+        shake           = dontCheck su.shake;
+        c2hs            = dontCheck su.c2hs;
         # latest cabal2nix from git needed for GHC 7.10.x
         cabal2nix       = self.callPackage /home/cray/cabal2nix/release.nix {};
       };

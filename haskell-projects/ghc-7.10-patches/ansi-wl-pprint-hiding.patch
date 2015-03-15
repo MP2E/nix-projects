@@ -1,0 +1,11 @@
+diff -Naur ansi-wl-pprint-0.6.7.1/Text/PrettyPrint/ANSI/Leijen.hs ansi-wl-pprint-0.6.7.1-patch/Text/PrettyPrint/ANSI/Leijen.hs
+--- ansi-wl-pprint-0.6.7.1/Text/PrettyPrint/ANSI/Leijen.hs	2015-03-14 01:47:56.281374320 -0700
++++ ansi-wl-pprint-0.6.7.1-patch/Text/PrettyPrint/ANSI/Leijen.hs	2015-03-14 01:47:47.771078373 -0700
+@@ -151,6 +151,7 @@
+ import Data.String (IsString(..))
+ import Data.Maybe (catMaybes)
+ import Data.Monoid (Monoid, mappend, mconcat, mempty)
++import Prelude hiding ((<$>))
+ 
+ 
+ infixr 5 </>,<//>,<$>,<$$>

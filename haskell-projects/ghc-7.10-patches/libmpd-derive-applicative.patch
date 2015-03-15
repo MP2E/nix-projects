@@ -1,0 +1,12 @@
+diff -Naur libmpd-0.9.0.2/tests/StringConn.hs libmpd-0.9.0.2-patch/tests/StringConn.hs
+--- libmpd-0.9.0.2/tests/StringConn.hs	2015-03-14 18:25:18.691988070 -0700
++++ libmpd-0.9.0.2-patch/tests/StringConn.hs	2015-03-14 18:25:04.840104519 -0700
+@@ -39,7 +39,7 @@
+     SMPD { runSMPD :: ErrorT MPDError
+                       (StateT [(Expect, Response String)]
+                        (ReaderT Password Identity)) a
+-         } deriving (Functor, Monad, MonadError MPDError)
++         } deriving (Functor, Applicative, Monad, MonadError MPDError)
+ 
+ instance MonadMPD StringMPD where
+     getVersion  = error "StringConn.getVersion: undefined"
