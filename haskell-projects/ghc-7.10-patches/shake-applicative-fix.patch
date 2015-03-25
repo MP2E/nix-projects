@@ -1,0 +1,36 @@
+diff -Naur shake-0.14.3/src/Development/Shake/Database.hs shake-0.14.3-patch/src/Development/Shake/Database.hs
+--- shake-0.14.3/src/Development/Shake/Database.hs	2015-03-23 20:21:29.865243087 -0700
++++ shake-0.14.3-patch/src/Development/Shake/Database.hs	2015-03-23 20:27:07.680715222 -0700
+@@ -28,7 +28,7 @@
+ import General.Intern as Intern
+ 
+ import Numeric.Extra
+-import Control.Applicative
++import Control.Applicative()
+ import Control.Exception
+ import Control.Monad.Extra
+ import Control.Concurrent.Extra
+diff -Naur shake-0.14.3/src/Development/Shake/Rules/Directory.hs shake-0.14.3-patch/src/Development/Shake/Rules/Directory.hs
+--- shake-0.14.3/src/Development/Shake/Rules/Directory.hs	2015-03-23 20:21:29.866243082 -0700
++++ shake-0.14.3-patch/src/Development/Shake/Rules/Directory.hs	2015-03-23 20:34:48.255921344 -0700
+@@ -9,7 +9,7 @@
+     defaultRuleDirectory
+     ) where
+ 
+-import Control.Applicative
++import Control.Applicative()
+ import Control.Monad.Extra
+ import Control.Monad.IO.Class
+ import Data.Maybe
+diff -Naur shake-0.14.3/src/General/Concurrent.hs shake-0.14.3-patch/src/General/Concurrent.hs
+--- shake-0.14.3/src/General/Concurrent.hs	2015-03-23 20:21:29.862243103 -0700
++++ shake-0.14.3-patch/src/General/Concurrent.hs	2015-03-23 20:21:13.599329324 -0700
+@@ -3,7 +3,7 @@
+     Fence, newFence, signalFence, waitFence, testFence,
+     ) where
+ 
+-import Control.Applicative
++import Control.Applicative()
+ import Control.Monad
+ import Data.IORef
+ 

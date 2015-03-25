@@ -48,9 +48,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
               xmonad-extras = appendPatch su.xmonad-extras "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/xmonad-extras-prelude-hiding.patch";
-              # setlocale requires base < 4.8
-              setlocale = doJailbreak su.setlocale;
-              ansi-wl-pprint = appendPatch su.ansi-wl-pprint "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/ansi-wl-pprint-hiding.patch";
+              primitive = doJailbreak su.primitive;
             };
           });
       myHaskellPackages = ownHaskellPackages haskellngPackages_ghc7101;
