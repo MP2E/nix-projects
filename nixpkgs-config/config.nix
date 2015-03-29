@@ -43,10 +43,11 @@ in
         timezone-series  = doJailbreak su.timezone-series;
         timezone-olson   = doJailbreak su.timezone-olson;
         cereal-text      = doJailbreak su.cereal-text;
-        libmpd           = appendPatch su.libmpd "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/libmpd-derive-applicative.patch";
-        shake            = appendPatch su.shake  "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/shake-applicative-fix.patch";
         c2hs             = dontCheck su.c2hs;
         text-show        = dontCheck su.text-show;
+        libmpd           = appendPatch su.libmpd "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/libmpd-derive-applicative.patch";
+        shake            = appendPatch su.shake  "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/shake-applicative-fix.patch";
+        hoogle           = appendPatch su.hoogle "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/hoogle-cmdline.patch";
       };
     });
 

@@ -1,0 +1,42 @@
+diff -Naur hoogle-4.2.38/src/Recipe/All.hs hoogle-4.2.38-patch/src/Recipe/All.hs
+--- hoogle-4.2.38/src/Recipe/All.hs	2015-03-28 00:48:24.189961380 -0700
++++ hoogle-4.2.38-patch/src/Recipe/All.hs	2015-03-28 00:54:46.404454717 -0700
+@@ -25,7 +25,7 @@
+ 
+ 
+ -- CmdLine is guaranteed to be a constructor of type Data
+-recipes :: CmdLine -> IO ()
++recipes :: CmdLine.All.CmdLine -> IO ()
+ recipes opt@Data{..} = withModeGlobalRead $ do
+     hSetBuffering stdout NoBuffering
+     createDirectoryIfMissing True datadir
+@@ -45,7 +45,7 @@
+ newtype CabalVersion = CabalVersion String deriving (Show,Typeable,Eq,Hashable,Binary,NFData)
+ newtype HoogleVersion = HoogleVersion String deriving (Show,Typeable,Eq,Hashable,Binary,NFData)
+ 
+-rules :: CmdLine -> ([String] -> IO ()) -> Rules ()
++rules :: CmdLine.All.CmdLine -> ([String] -> IO ()) -> Rules ()
+ rules opts@Data{..} warn = do
+     let srcCabal name ver = "downloads/cabal" </> name </> ver </> name <.> "cabal"
+     let srcHoogle name ver = "downloads/hoogle" </> name </> ver </> "doc" </> "html" </> name <.> "txt"
+@@ -178,7 +178,7 @@
+                 liftIO $ warn [takeBaseName out ++ ": " ++ show e | e <- err]
+ 
+ 
+-urls :: CmdLine -> [(FilePath, URL)]
++urls :: CmdLine.All.CmdLine -> [(FilePath, URL)]
+ urls Data{..} = let (*) = (,) in
+     ["keyword.htm" * "http://www.haskell.org/haskellwiki/Keywords"
+     ,"platform.cabal" * "http://code.galois.com/darcs/haskell-platform/haskell-platform.cabal"
+diff -Naur hoogle-4.2.38/src/Recipe/Command.hs hoogle-4.2.38-patch/src/Recipe/Command.hs
+--- hoogle-4.2.38/src/Recipe/Command.hs	2015-03-28 00:48:24.189961380 -0700
++++ hoogle-4.2.38-patch/src/Recipe/Command.hs	2015-03-28 00:48:10.570046438 -0700
+@@ -9,7 +9,7 @@
+ import CmdLine.All
+ 
+ 
+-wget :: CmdLine -> URL -> FilePath -> Action ()
++wget :: CmdLine.All.CmdLine -> URL -> FilePath -> Action ()
+ wget opt@Data{..} from to = do
+     when nodownload $
+          error "Downloads are disabled."
