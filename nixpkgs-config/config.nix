@@ -47,7 +47,6 @@ in
         text-show        = dontCheck su.text-show;
         libmpd           = appendPatch su.libmpd "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/libmpd-derive-applicative.patch";
         shake            = appendPatch su.shake  "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/shake-applicative-fix.patch";
-        hoogle           = appendPatch su.hoogle "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/hoogle-cmdline.patch";
       };
     });
 
@@ -64,9 +63,9 @@ in
       attoparsec parsec aeson mtl transformers lens lens-aeson
       text random vector stm comonad free total network HTTP
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
-      bytestring pipes turtle foldl cereal
-      hlint cabal-install hoogle
-      xmonad xmonad-contrib xmobar djinn
+      bytestring pipes turtle foldl cereal OpenGL GLUT
+      hlint cabal-install hoogle yesod yesod-bin djinn alex happy
+      xmonad xmonad-contrib xmobar
     ]);
 
     # Packages that aren't Haskell packages.
@@ -83,7 +82,6 @@ in
     chocolateDoomMaster = devPackage "chocolate-doom";
     restrife = devPackage "restrife";
     nestopiaMaster = devPackage "nestopia";
-    dolphinEmuMaster = devPackageC self "dolphin-emu" { pulseaudio = pkgs.pulseaudio; };
 
     # Package overrides
     SDL_mixer = self.SDL_mixer.override { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
