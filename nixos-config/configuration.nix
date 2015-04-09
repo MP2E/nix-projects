@@ -48,7 +48,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
               xmonad-extras = appendPatch su.xmonad-extras "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/xmonad-extras-prelude-hiding.patch";
-              primitive = doJailbreak su.primitive;
             };
           });
       myHaskellPackages = ownHaskellPackages haskellngPackages_ghc7101;

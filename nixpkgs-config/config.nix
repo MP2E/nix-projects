@@ -37,16 +37,11 @@ in
         divebot          = haskellPackage se "divebot";
         # latest cabal2nix from git needed for GHC 7.10.x
         cabal2nix        = self.callPackage /home/cray/cabal2nix/release.nix {};
-        deepseq-generics = doJailbreak su.deepseq-generics;
-        primitive        = doJailbreak su.primitive;
         total            = doJailbreak su.total;
         timezone-series  = doJailbreak su.timezone-series;
         timezone-olson   = doJailbreak su.timezone-olson;
         cereal-text      = doJailbreak su.cereal-text;
-        c2hs             = dontCheck su.c2hs;
-        text-show        = dontCheck su.text-show;
         libmpd           = appendPatch su.libmpd "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/libmpd-derive-applicative.patch";
-        shake            = appendPatch su.shake  "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/shake-applicative-fix.patch";
       };
     });
 
