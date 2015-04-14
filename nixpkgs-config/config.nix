@@ -38,10 +38,7 @@ in
         # latest cabal2nix from git needed for GHC 7.10.x
         cabal2nix        = self.callPackage /home/cray/cabal2nix/release.nix {};
         total            = doJailbreak su.total;
-        timezone-series  = doJailbreak su.timezone-series;
-        timezone-olson   = doJailbreak su.timezone-olson;
         cereal-text      = doJailbreak su.cereal-text;
-        libmpd           = appendPatch su.libmpd "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/libmpd-derive-applicative.patch";
       };
     });
 
