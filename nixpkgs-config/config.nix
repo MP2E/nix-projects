@@ -35,8 +35,8 @@ in
         xmobar           = haskellPackage se "xmobar";
         # my irc bot
         divebot          = haskellPackage se "divebot";
-        # latest cabal2nix from git needed for GHC 7.10.x
-        cabal2nix        = self.callPackage /home/cray/cabal2nix/release.nix {};
+        holydivebot      = haskellPackage se "holydivebot";
+        # GHC 7.10.1 needs these to be jailbroken
         total            = doJailbreak su.total;
         cereal-text      = doJailbreak su.cereal-text;
       };
@@ -44,12 +44,7 @@ in
 
     # Derive package sets for every version of GHC I'm interested in.
 
-    myHaskellPackages = ownHaskellPackages haskellngPackages_ghc7101;
-
-    haskellngPackages_ghc7101 = pkgs.haskell-ng.packages.ghc7101.override {
-      overrides = config.haskellPackageOverrides or (self: super: {});
-      provideOldAttributeNames = false;
-    };
+    myHaskellPackages = ownHaskellPackages pkgs.haskellngPackages;
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
@@ -57,7 +52,7 @@ in
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes turtle foldl cereal OpenGL GLUT
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
-      xmonad xmonad-contrib xmobar
+      xmonad xmonad-contrib xmobar darcs
     ]);
 
     # Packages that aren't Haskell packages.

@@ -19,6 +19,10 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
       options = "defaults";
     };
 
+  services.udev.extraRules = ''
+    ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device"
+  '';
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -42,20 +46,16 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   };
 
   nixpkgs.config = {
+    # needed for xmonad to find xmonadContrib
+    provideOldHaskellAttributeNames = true;
     packageOverrides = pkgs: rec {
       ownHaskellPackages = ver : pkgs.recurseIntoAttrs (ver.override {
         overrides = se : su : rec {
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
-              xmonad-extras = appendPatch su.xmonad-extras "/home/cray/nix-projects/haskell-projects/ghc-7.10-patches/xmonad-extras-prelude-hiding.patch";
             };
           });
-      myHaskellPackages = ownHaskellPackages haskellngPackages_ghc7101;
-      haskellngPackages_ghc7101 = pkgs.haskell-ng.packages.ghc7101.override {
-        overrides = config.haskellPackageOverrides or (self: super: {});
-        # needs to be true for xmonad-contrib to be found
-        provideOldAttributeNames = true;
-      };
+      myHaskellPackages = ownHaskellPackages pkgs.haskellngPackages;
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;
