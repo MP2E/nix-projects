@@ -2,7 +2,7 @@
 , mesa, libarchive, libao, unzip, xdg_utils, gsettings_desktop_schemas }:
 
 stdenv.mkDerivation rec {
-  name = "nestopia-20141221";
+  name = "nestopia-20150426";
   src = /home/cray/nestopia-src;
 
   enableParallelBuilding = true;

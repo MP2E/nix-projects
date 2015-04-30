@@ -32,7 +32,10 @@ in
       overrides = se : su : rec {
         xmonad 	     	 = haskellPackage se "xmonad";
         xmonad-contrib	 = haskellPackage se "xmonad-contrib";
-        xmobar           = haskellPackage se "xmobar";
+        xmobar           = haskellPackageC se "xmobar" { Xrender = null;  inherit (pkgs.xlibs) libXpm; inherit (pkgs.xlibs) libXrandr;  inherit (pkgs) wirelesstools;};
+        ghc-mod          = dontCheck (haskellPackage se "ghc-mod");
+        ghci-ng          = haskellPackage se "ghci-ng";
+        cabal-helper     = haskellPackage se "cabal-helper";
         # my irc bot
         divebot          = haskellPackage se "divebot";
         holydivebot      = haskellPackage se "holydivebot";
@@ -52,23 +55,26 @@ in
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes turtle foldl cereal OpenGL GLUT
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
+      ghci-ng ghc-mod stylish-haskell cabal2nix
       xmonad xmonad-contrib xmobar darcs
     ]);
 
     # Packages that aren't Haskell packages.
-    sixpair = normalPackage "sixpair";
-    zandronum = normalPackage "zandronum";
+    sixpair      = normalPackage "sixpair";
+    zandronum    = normalPackage "zandronum";
     fmod_4_24_16 = normalPackage "fmod";
-    reposurgeon = normalPackage "reposurgeon";
-    doom64ex = normalPackage "doom64ex";
-    wadgen = normalPackage "wadgen";
+    reposurgeon  = normalPackage "reposurgeon";
+    doom64ex     = normalPackage "doom64ex";
+    wadgen       = normalPackage "wadgen";
+    slade        = normalPackage "slade";
+    zdbsp        = normalPackage "zdbsp";
 
     # Development versions of packages
-    odamexMaster = devPackage "odamex";
-    eternityMaster = devPackage "eternity-engine";
+    odamexMaster        = devPackage "odamex";
+    eternityMaster      = devPackage "eternity-engine";
     chocolateDoomMaster = devPackage "chocolate-doom";
-    restrife = devPackage "restrife";
-    nestopiaMaster = devPackage "nestopia";
+    restrife            = devPackage "restrife";
+    nestopiaMaster      = devPackage "nestopia";
 
     # Package overrides
     SDL_mixer = self.SDL_mixer.override { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
