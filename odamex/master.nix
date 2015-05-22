@@ -1,11 +1,11 @@
 { stdenv, cmake, fetchsvn, pkgconfig, SDL, SDL_mixer, SDL_net }:
 
 stdenv.mkDerivation rec {
-  name = "odamex-20141019";
+  name = "odamex-20150513";
   src = fetchsvn {
     url = http://odamex.net/svn/root/trunk;
-    rev = "5139";
-    sha256 = "1lwnlb38fs9bgd7gw395czrgfxwj25h9jcjl5q3rv7war8crcyq3";
+    rev = "5397";
+    sha256 = "1ly1w9n4hxfd9qs49z9qj04mlkb2bfldhg59zj9ijkhd6g7yjcd5";
   };
 
   cmakeFlags = ''

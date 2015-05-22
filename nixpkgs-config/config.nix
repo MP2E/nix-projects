@@ -47,7 +47,7 @@ in
 
     # Derive package sets for every version of GHC I'm interested in.
 
-    myHaskellPackages = ownHaskellPackages pkgs.haskellngPackages;
+    myHaskellPackages = ownHaskellPackages pkgs.haskellPackages;
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
