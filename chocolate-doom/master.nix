@@ -1,11 +1,11 @@
 { stdenv, autoconf, automake, pkgconfig, SDL, SDL_mixer, SDL_net, fetchgit }:
 
 stdenv.mkDerivation rec {
-  name = "chocolate-doom-20150513";
+  name = "chocolate-doom-20150608";
   src = fetchgit {
     url = "https://github.com/fragglet/chocolate-doom.git";
-    rev = "d1bfae16981023899c7703ec5004655cd6f0ffaf";
-    sha256 = "1fbsh920yq3cmfis4nfpsb5kgmgsicwah2fj9s89dq657wpr47la";
+    rev = "ef4c73fc8157ee3be6a41bf1f8bdce82657d715b";
+    sha256 = "1hlz7z00hnl5azpyg7939dl56fd6sd6jafyi3zh8n5f6ps1jbwrw";
   };
   buildInputs = [ autoconf automake pkgconfig SDL SDL_mixer SDL_net ];
   patchPhase = ''

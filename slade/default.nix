@@ -1,11 +1,11 @@
 { stdenv, fetchgit, cmake, wxGTK30, gtk2, freetype, ftgl, sfml, fluidsynth, libmodplug, freeimage, p7zip, zlib, bzip2, mesa, glew, pkgconfig }:
 
 stdenv.mkDerivation {
-  name = "slade-20150424";
+  name = "slade-20150527";
   src = fetchgit {
     url = https://github.com/sirjuddington/SLADE;
-    rev = "2afd7b3be0a9f18dbaf5b0a28a3f2c704e8ee41f";
-    sha256 = "18rpxz5gi5zxfmmw5pgkcvr3ywgha3yykj8z8zsxrianylwdcgsm";
+    rev = "78ab9df4cb2449798ae605cd073c7a11a131f402";
+    sha256 = "18nnmb1y3dkhhapizywrmrkyzzv88cjg1j6f1avwflwhgcfbcwid";
   };
 
   buildInputs = [ cmake wxGTK30 gtk2 freetype ftgl glew sfml fluidsynth libmodplug freeimage p7zip zlib bzip2 mesa pkgconfig ];

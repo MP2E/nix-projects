@@ -53,6 +53,8 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
         overrides = se : su : rec {
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
+              setlocale = doJailbreak su.setlocale;
+              mtl        = doJailbreak su.mtl;
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskellPackages;

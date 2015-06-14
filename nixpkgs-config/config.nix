@@ -35,13 +35,14 @@ in
         xmobar           = haskellPackageC se "xmobar" { Xrender = null;  inherit (pkgs.xlibs) libXpm; inherit (pkgs.xlibs) libXrandr;  inherit (pkgs) wirelesstools;};
         ghc-mod          = dontCheck (haskellPackage se "ghc-mod");
         ghci-ng          = haskellPackage se "ghci-ng";
-        cabal-helper     = haskellPackage se "cabal-helper";
         # my irc bot
         divebot          = haskellPackage se "divebot";
         holydivebot      = haskellPackage se "holydivebot";
+        prover           = haskellPackage se "prover";
         # GHC 7.10.1 needs these to be jailbroken
         total            = doJailbreak su.total;
         cereal-text      = doJailbreak su.cereal-text;
+        setlocale        = doJailbreak su.setlocale;
       };
     });
 
@@ -56,7 +57,7 @@ in
       bytestring pipes turtle foldl cereal OpenGL GLUT
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
       ghci-ng ghc-mod stylish-haskell cabal2nix
-      xmonad xmonad-contrib xmobar darcs
+      xmonad xmonad-contrib xmobar darcs prover
     ]);
 
     # Packages that aren't Haskell packages.

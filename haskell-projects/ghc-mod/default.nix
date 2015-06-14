@@ -1,9 +1,9 @@
 { mkDerivation, async, base, bytestring, cabal-helper, cereal
-, containers, data-default, deepseq, directory, djinn-ghc, doctest
-, emacs, filepath, ghc, ghc-paths, ghc-syb-utils, haskell-src-exts
-, hlint, hspec, makeWrapper, monad-control, monad-journal, mtl
-, old-time, pretty, process, split, stdenv, syb, temporary, text
-, time, transformers, transformers-base
+, containers, deepseq, directory, djinn-ghc, doctest, emacs
+, filepath, ghc, ghc-paths, ghc-syb-utils, haskell-src-exts, hlint
+, hspec, monad-control, monad-journal, mtl, old-time, pretty
+, process, split, stdenv, syb, temporary, text, time, transformers
+, transformers-base
 }:
 mkDerivation {
   pname = "ghc-mod";
@@ -12,14 +12,14 @@ mkDerivation {
   isLibrary = true;
   isExecutable = true;
   buildDepends = [
-    async base bytestring cabal-helper cereal containers data-default
-    deepseq directory djinn-ghc filepath ghc ghc-paths ghc-syb-utils
+    async base bytestring cabal-helper cereal containers deepseq
+    directory djinn-ghc filepath ghc ghc-paths ghc-syb-utils
     haskell-src-exts hlint monad-control monad-journal mtl old-time
     pretty process split syb temporary text time transformers
     transformers-base
   ];
   testDepends = [ base doctest hspec ];
-  buildTools = [ emacs makeWrapper ];
+  buildTools = [ emacs ];
   configureFlags = "--datasubdir=ghc-mod-0";
   postInstall = ''
     cd $out/share/ghc-mod-0

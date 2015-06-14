@@ -1,13 +1,13 @@
-{ stdenv, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, makeWrapper
+{ stdenv, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, glew, makeWrapper
 , mesa, libarchive, libao, unzip, xdg_utils, gsettings_desktop_schemas }:
 
 stdenv.mkDerivation rec {
-  name = "nestopia-20150426";
+  name = "nestopia-20150527";
   src = /home/cray/nestopia-src;
 
   enableParallelBuilding = true;
 
-  buildInputs = [ pkgconfig SDL2 alsaLib gtk3 mesa_glu mesa makeWrapper
+  buildInputs = [ pkgconfig SDL2 alsaLib gtk3 mesa_glu glew mesa makeWrapper
                   libarchive libao unzip xdg_utils gsettings_desktop_schemas ];
 
   installPhase = ''
