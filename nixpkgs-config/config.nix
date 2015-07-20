@@ -62,8 +62,6 @@ in
 
     # Packages that aren't Haskell packages.
     sixpair      = normalPackage "sixpair";
-    zandronum    = normalPackage "zandronum";
-    fmod_4_24_16 = normalPackage "fmod";
     reposurgeon  = normalPackage "reposurgeon";
     doom64ex     = normalPackage "doom64ex";
     wadgen       = normalPackage "wadgen";
