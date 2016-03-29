@@ -1,5 +1,5 @@
 { stdenv, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, glew, makeWrapper
-, mesa, libarchive, libao, unzip, xdg_utils, gsettings_desktop_schemas }:
+, mesa, libarchive, libao, unzip, xdg_utils, gsettings_desktop_schemas, epoxy }:
 
 stdenv.mkDerivation rec {
   name = "nestopia-20150527";
@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   buildInputs = [ pkgconfig SDL2 alsaLib gtk3 mesa_glu glew mesa makeWrapper
-                  libarchive libao unzip xdg_utils gsettings_desktop_schemas ];
+                  libarchive libao unzip xdg_utils gsettings_desktop_schemas epoxy ];
 
   installPhase = ''
     mkdir -p $out/{bin,share/nestopia}

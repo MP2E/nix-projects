@@ -33,7 +33,6 @@ in
         xmonad 	     	 = haskellPackage se "xmonad";
         xmonad-contrib	 = haskellPackage se "xmonad-contrib";
         xmobar           = haskellPackageC se "xmobar" { Xrender = null;  inherit (pkgs.xlibs) libXpm; inherit (pkgs.xlibs) libXrandr;  inherit (pkgs) wirelesstools;};
-        ghc-mod          = dontCheck (haskellPackage se "ghc-mod");
         ghci-ng          = haskellPackage se "ghci-ng";
         # my irc bot
         divebot          = haskellPackage se "divebot";
@@ -56,7 +55,7 @@ in
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes turtle foldl cereal OpenGL GLUT
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
-      ghci-ng ghc-mod stylish-haskell cabal2nix
+      ghci-ng stylish-haskell cabal2nix
       xmonad xmonad-contrib xmobar darcs prover
     ]);
 
@@ -74,6 +73,7 @@ in
     chocolateDoomMaster = devPackage "chocolate-doom";
     restrife            = devPackage "restrife";
     nestopiaMaster      = devPackage "nestopia";
+    mgbaMaster          = devPackage "mgba";
 
     # Package overrides
     SDL_mixer = self.SDL_mixer.override { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
