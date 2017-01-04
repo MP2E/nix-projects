@@ -30,24 +30,14 @@ in
     # have the settings I want.
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
       overrides = se : su : rec {
-        xmonad 	     	 = haskellPackage se "xmonad";
-        xmonad-contrib	 = haskellPackage se "xmonad-contrib";
-        xmobar           = haskellPackageC se "xmobar" { Xrender = null;  inherit (pkgs.xlibs) libXpm; inherit (pkgs.xlibs) libXrandr;  inherit (pkgs) wirelesstools;};
-        ghci-ng          = haskellPackage se "ghci-ng";
         # my irc bot
         divebot          = haskellPackage se "divebot";
-        holydivebot      = haskellPackage se "holydivebot";
-        prover           = haskellPackage se "prover";
-        # GHC 7.10.1 needs these to be jailbroken
-        total            = doJailbreak su.total;
-        cereal-text      = doJailbreak su.cereal-text;
-        setlocale        = doJailbreak su.setlocale;
       };
     });
 
     # Derive package sets for every version of GHC I'm interested in.
 
-    myHaskellPackages = ownHaskellPackages pkgs.haskellPackages;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc7103;
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
@@ -55,13 +45,16 @@ in
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes turtle foldl cereal OpenGL GLUT
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
-      ghci-ng stylish-haskell cabal2nix
-      xmonad xmonad-contrib xmobar darcs prover
+      ghci-ng ghc-mod stylish-haskell cabal2nix
+      xmonad xmonad-contrib xmobar
+    ]);
+
+    jsEnv = haskell.packages.ghcjs.ghcWithPackages (p: with p; [
+      reflex reflex-dom ghcjs-dom
     ]);
 
     # Packages that aren't Haskell packages.
     sixpair      = normalPackage "sixpair";
-    reposurgeon  = normalPackage "reposurgeon";
     doom64ex     = normalPackage "doom64ex";
     wadgen       = normalPackage "wadgen";
     slade        = normalPackage "slade";
@@ -71,7 +64,6 @@ in
     odamexMaster        = devPackage "odamex";
     eternityMaster      = devPackage "eternity-engine";
     chocolateDoomMaster = devPackage "chocolate-doom";
-    restrife            = devPackage "restrife";
     nestopiaMaster      = devPackage "nestopia";
     mgbaMaster          = devPackage "mgba";
 

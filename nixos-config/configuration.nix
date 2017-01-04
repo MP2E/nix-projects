@@ -16,7 +16,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   fileSystems."/mnt/vault" =
     { device = "/dev/disk/by-label/TheVault";
       fsType = "ntfs";
-      options = "defaults";
+      options = [ "defaults" ];
     };
 
   services.udev.extraRules = ''
@@ -30,13 +30,12 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.extraEntries =
     ''
-    menuentry "Windows 7" {
+    menuentry "Windows 10" {
       chainloader (hd0,1)+1
     }
     '';
 
   networking.hostName = "applicative"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless.
 
   # Select internationalisation properties.
   i18n = {
@@ -53,11 +52,9 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
         overrides = se : su : rec {
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
-              setlocale = doJailbreak su.setlocale;
-              mtl        = doJailbreak su.mtl;
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskellPackages;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc7103;
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;
@@ -73,7 +70,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   environment.systemPackages = with pkgs; [
     wget
     zsh
-    terminus_font
     gitAndTools.gitFull
     zlib
     binutils
@@ -92,6 +88,19 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     xclip
     bluez5
   ];
+
+  # make sure fonts are available!
+
+  fonts = {
+    enableFontDir = true;
+    enableGhostscriptFonts = true;
+    fonts = with pkgs; [
+      corefonts  # Micrsoft free fonts
+      terminus_font
+      ubuntu_font_family  # Ubuntu fonts
+      unifont # some international languages
+   ];
+  };
 
   # List services that you want to enable:
 
@@ -124,7 +133,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
