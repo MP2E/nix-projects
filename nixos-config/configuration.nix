@@ -46,15 +46,17 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
 
   nixpkgs.config = {
     # needed for xmonad to find xmonadContrib
-    provideOldHaskellAttributeNames = true;
+    # provideOldHaskellAttributeNames = true;
     packageOverrides = pkgs: rec {
       ownHaskellPackages = ver : pkgs.recurseIntoAttrs (ver.override {
         overrides = se : su : rec {
+              # needed for xmonad master to configure
+              X11 = su.X11_1_7;
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc7103;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;

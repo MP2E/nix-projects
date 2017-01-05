@@ -30,14 +30,20 @@ in
     # have the settings I want.
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
       overrides = se : su : rec {
-        # my irc bot
         divebot          = haskellPackage se "divebot";
+        # needed for xmonad master
+        X11              = su.X11_1_7;
+        xmonad           = haskellPackage se "xmonad";
+        xmonad-contrib   = haskellPackage se "xmonad-contrib";
+        cabal-helper     = doJailbreak su.cabal-helper;
+        total            = doJailbreak su.total;
+        turtle           = doJailbreak su.turtle;
       };
     });
 
     # Derive package sets for every version of GHC I'm interested in.
 
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc7103;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
@@ -45,7 +51,7 @@ in
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes turtle foldl cereal OpenGL GLUT
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
-      ghci-ng ghc-mod stylish-haskell cabal2nix
+      # ghci-ng ghc-mod stylish-haskell
       xmonad xmonad-contrib xmobar
     ]);
 
