@@ -147,11 +147,12 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   hardware.bluetooth.enable = true;
+  hardware.mwProCapture.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {
     name = "cray";
-    group = "wheel";
+    extraGroups = [ "wheel" "audio" "networkmanager" ];
     createHome = true;
     home = "/home/cray";
     shell = "/var/run/current-system/sw/bin/zsh";
