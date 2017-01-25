@@ -74,7 +74,27 @@ in
     mgbaMaster          = devPackage "mgba";
 
     # Package overrides
-    SDL_mixer  = self.SDL_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
-    obs-studio = self.obs-studio.override { pulseaudioSupport = true; };
+    ffmpeg     = self.ffmpeg-full.override {
+                                              nonfreeLicensing = true;
+                                              alsaLib          = pkgs.alsaLib;
+                                              fdkaacExtlib     = true;
+                                              fdk_aac          = pkgs.fdk_aac;
+                                              lame             = pkgs.lame;
+                                              libogg           = pkgs.libogg;
+                                              libass           = pkgs.libass;
+                                              libvpx           = pkgs.libvpx;
+                                              libva            = pkgs.libva;
+                                              libvdpau         = pkgs.libvdpau;
+                                              libvorbis        = pkgs.libvorbis;
+                                              libpulseaudio    = pkgs.libpulseaudio;
+                                              lzma             = pkgs.xz;
+                                              nvenc            = true;
+                                              nvidia-video-sdk = pkgs.nvidia-video-sdk;
+                                              x264             = pkgs.x264;
+                                              x265             = pkgs.x265;
+                                              zlib             = pkgs.zlib;
+                                            };
+    SDL_mixer  = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
+    obs-studio = self.obs-studio.override  { pulseaudioSupport = true; };
   };
 }
