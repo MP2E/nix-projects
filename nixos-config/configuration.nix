@@ -137,6 +137,8 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
 
   # virtualisation.virtualbox.host.enable = true;
 
+  nix.useSandbox = true;
+
   programs.zsh.enable = true;
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
 

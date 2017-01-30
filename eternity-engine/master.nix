@@ -1,16 +1,13 @@
-{ stdenv, cmake, mesa, SDL, SDL_mixer, SDL_net, fetchgit }:
+{ stdenv, cmake, mesa, SDL, SDL_mixer, SDL_net, fetchFromGitHub }:
 
 stdenv.mkDerivation rec {
-  name = "eternity-engine-20150131";
-  src = fetchgit {
-    url = git://github.com/team-eternity/eternity.git;
-    rev = "b653b6471f823c56a6f5297a7ce1e7560652deb7";
-    sha256 = "15yldd9w4ydl0vwv51lbglxgav2zg6m3l7pnmyl1ppzrijj0injy";
+  name = "eternity-engine-20170127";
+  src = fetchFromGitHub {
+    owner = "team-eternity";
+    repo = "eternity";
+    rev = "65981e70d87390e439d1682b6a63b27042aaa51a";
+    sha256 = "1rvjrmli020bsvbs77bc0jwjc14x6nbdzdjm6jml0c8ja19l00i7";
   };
-
-  cmakeFlags = ''
-    -DCMAKE_BUILD_TYPE=Release
-  '';
 
   buildInputs = [ cmake mesa SDL SDL_mixer SDL_net ];
 

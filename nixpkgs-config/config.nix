@@ -41,8 +41,7 @@ in
       };
     });
 
-    # Derive package sets for every version of GHC I'm interested in.
-
+    # Derive package sets for the versions of GHC I'm interested in.
     myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
@@ -71,7 +70,6 @@ in
     eternityMaster      = devPackage "eternity-engine";
     chocolateDoomMaster = devPackage "chocolate-doom";
     nestopiaMaster      = devPackage "nestopia";
-    mgbaMaster          = devPackage "mgba";
 
     # Package overrides
     ffmpeg     = self.ffmpeg-full.override {
