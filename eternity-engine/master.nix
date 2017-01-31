@@ -1,21 +1,24 @@
-{ stdenv, cmake, mesa, SDL, SDL_mixer, SDL_net, fetchFromGitHub }:
+{ stdenv, cmake, mesa, SDL, SDL_mixer, SDL_net, fetchFromGitHub, makeWrapper }:
 
 stdenv.mkDerivation rec {
-  name = "eternity-engine-20170127";
+  name = "eternity-engine-20170130";
   src = fetchFromGitHub {
     owner = "team-eternity";
     repo = "eternity";
-    rev = "65981e70d87390e439d1682b6a63b27042aaa51a";
-    sha256 = "1rvjrmli020bsvbs77bc0jwjc14x6nbdzdjm6jml0c8ja19l00i7";
+    rev = "c5bbb77db8fc63494cf054c59eff61bde971b41a";
+    sha256 = "a0d1c4cd0d24eecc8071a9589d1983bc54fc3b404e379bc6dc4818a37c941fbc";
   };
 
-  buildInputs = [ cmake mesa SDL SDL_mixer SDL_net ];
+  nativeBuildInputs = [ cmake makeWrapper ];
+  buildInputs = [ mesa SDL SDL_mixer SDL_net ];
 
   enableParallelBuilding = true;
 
   installPhase = ''
-  mkdir -p $out/bin
-  cp source/eternity $out/bin
+  mkdir -p $out/bin $out/lib
+  cp source/eternity $out/lib
+  cp -r base/ $out/lib
+  makeWrapper $out/lib/eternity $out/bin/eternity
   '';
 
   meta = {

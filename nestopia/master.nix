@@ -2,7 +2,7 @@
 , mesa, libarchive, libao, unzip, xdg_utils, gsettings_desktop_schemas, epoxy }:
 
 stdenv.mkDerivation rec {
-  name = "nestopia-20150527";
+  name = "nestopia-20170130";
   src = /home/cray/nestopia-src;
 
   enableParallelBuilding = true;

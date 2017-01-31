@@ -97,7 +97,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     enableFontDir = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
-      corefonts  # Micrsoft free fonts
+      corefonts  # Microsoft free fonts
       terminus_font
       ubuntu_font_family  # Ubuntu fonts
       unifont # some international languages
@@ -127,10 +127,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";
   services.xserver.desktopManager.default = "none";
-  services.xserver.displayManager.slim.theme = pkgs.fetchurl {
-    url = http://www.mirrorservice.org/sites/downloads.sourceforge.net/s/sl/slim.berlios/slim-mindlock.tar.gz;
-    sha256 = "99a6e6acd55bf55ece18a3f644299517b71c1adc49efd87ce2d7e654fb67033c";
-  };
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
