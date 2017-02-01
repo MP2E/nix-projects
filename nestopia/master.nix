@@ -1,4 +1,4 @@
-{ stdenv, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, glew, makeWrapper
+{ stdenv, cmake, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, glew, makeWrapper
 , mesa, libarchive, libao, unzip, xdg_utils, gsettings_desktop_schemas, epoxy }:
 
 stdenv.mkDerivation rec {
@@ -7,7 +7,8 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  buildInputs = [ pkgconfig SDL2 alsaLib gtk3 mesa_glu glew mesa makeWrapper
+  nativeBuildInputs = [ pkgconfig cmake makeWrapper ];
+  buildInputs = [ SDL2 alsaLib gtk3 mesa_glu glew mesa
                   libarchive libao unzip xdg_utils gsettings_desktop_schemas epoxy ];
 
   installPhase = ''
@@ -21,8 +22,6 @@ stdenv.mkDerivation rec {
          --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH:$out/share"
      done
   '';
-
-  patches = [ ./build-fix.patch ];
 
   meta = {
     homepage = http://0ldsk00l.ca/nestopia/;
