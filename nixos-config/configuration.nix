@@ -59,7 +59,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       # linux = pkgs.linuxPackages_latest.kernel;
-      linuxPackages = pkgs.linuxPackages_latest;
+      # linuxPackages = pkgs.linuxPackages_latest;
     };
     chromium = {
       enablePepperFlash = true;
