@@ -32,12 +32,9 @@ in
       overrides = se : su : rec {
         divebot          = haskellPackage se "divebot";
         # needed for xmonad master
-        X11              = su.X11_1_7;
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
-        cabal-helper     = doJailbreak su.cabal-helper;
         total            = doJailbreak su.total;
-        turtle           = doJailbreak su.turtle;
       };
     });
 

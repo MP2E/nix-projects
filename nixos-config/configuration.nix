@@ -51,14 +51,14 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
       ownHaskellPackages = ver : pkgs.recurseIntoAttrs (ver.override {
         overrides = se : su : rec {
               # needed for xmonad master to configure
-              X11 = su.X11_1_7;
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
+              xmonad-extras = doJailbreak su.xmonad-extras;
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
       bluez = pkgs.bluez5.override { enableWiimote = true; };
-      linux = pkgs.linuxPackages_latest.kernel;
+      # linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;
     };
     chromium = {
@@ -71,7 +71,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     wget
-    zsh
     gitAndTools.gitFull
     zlib
     binutils
@@ -101,6 +100,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
       terminus_font
       ubuntu_font_family  # Ubuntu fonts
       unifont # some international languages
+      dejavu_fonts
    ];
   };
 
@@ -134,6 +134,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   # virtualisation.virtualbox.host.enable = true;
 
   nix.useSandbox = true;
+  nix.extraOptions = "auto-optimize-store = true";
 
   programs.zsh.enable = true;
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";

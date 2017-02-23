@@ -4,7 +4,7 @@
 }:
 mkDerivation {
   pname = "xmonad";
-  version = "0.12";
+  version = "0.13";
   src = /home/cray/xmonad;
   isLibrary = true;
   isExecutable = true;
