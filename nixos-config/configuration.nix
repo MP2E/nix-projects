@@ -58,8 +58,8 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
       bluez = pkgs.bluez5.override { enableWiimote = true; };
-      # linux = pkgs.linuxPackages_latest.kernel;
-      # linuxPackages = pkgs.linuxPackages_latest;
+      linux = pkgs.linuxPackages_latest.kernel;
+      linuxPackages = pkgs.linuxPackages_latest;
     };
     chromium = {
       enablePepperFlash = true;
@@ -127,7 +127,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";
   services.xserver.desktopManager.default = "none";
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidiaBeta" ];
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
