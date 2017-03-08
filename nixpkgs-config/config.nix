@@ -90,6 +90,7 @@ in
                                               zlib             = pkgs.zlib;
                                             };
     SDL_mixer  = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
+    SDL2_mixer = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
     obs-studio = self.obs-studio.override  { pulseaudioSupport = true; };
   };
 }
