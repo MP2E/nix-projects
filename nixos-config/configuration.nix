@@ -93,10 +93,10 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   # make sure fonts are available!
 
   fonts = {
+    enableCoreFonts = true;
     enableFontDir = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
-      corefonts  # Microsoft free fonts
       terminus_font
       ubuntu_font_family  # Ubuntu fonts
       unifont # some international languages

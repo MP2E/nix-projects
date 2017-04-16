@@ -35,6 +35,7 @@ in
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
         total            = doJailbreak su.total;
+        corrode          = haskellPackage se "corrode";
       };
     });
 
@@ -49,6 +50,7 @@ in
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
       # ghci-ng ghc-mod stylish-haskell
       xmonad xmonad-contrib xmobar
+      corrode
     ]);
 
     jsEnv = haskell.packages.ghcjs.ghcWithPackages (p: with p; [
@@ -61,12 +63,14 @@ in
     wadgen       = normalPackage "wadgen";
     slade        = normalPackage "slade";
     zdbsp        = normalPackage "zdbsp";
+    strife       = normalPackage "strife-ve";
 
     # Development versions of packages
     odamexMaster        = devPackage "odamex";
     eternityMaster      = devPackage "eternity-engine";
     chocolateDoomMaster = devPackage "chocolate-doom";
     nestopiaMaster      = devPackage "nestopia";
+    mgbaMaster          = devPackageC libsForQt5 "mgba" {};
 
     # Package overrides
     ffmpeg     = self.ffmpeg-full.override {
@@ -76,6 +80,7 @@ in
                                               fdk_aac          = pkgs.fdk_aac;
                                               lame             = pkgs.lame;
                                               libogg           = pkgs.libogg;
+                                              libopus          = pkgs.libopus;
                                               libass           = pkgs.libass;
                                               libvpx           = pkgs.libvpx;
                                               libva            = pkgs.libva;
@@ -88,6 +93,7 @@ in
                                               x264             = pkgs.x264;
                                               x265             = pkgs.x265;
                                               zlib             = pkgs.zlib;
+                                              SDL2             = pkgs.SDL2;
                                             };
     SDL_mixer  = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
     SDL2_mixer = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
