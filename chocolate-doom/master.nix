@@ -1,7 +1,7 @@
 { stdenv, autoconf, automake, pkgconfig, SDL2, SDL2_mixer, SDL2_net }:
 
 stdenv.mkDerivation rec {
-  name = "chocolate-doom-20170308";
+  name = "chocolate-doom-20170416";
   src = ../../cdoomgit;
   nativeBuildInputs = [ autoconf automake pkgconfig ];
   buildInputs = [ SDL2 SDL2_mixer SDL2_net ];

@@ -24,7 +24,6 @@ let
 
 in
 { allowUnfree = true;
-  ffmpeg.x11grab = true;
   packageOverrides = self: rec {
     # Haskell packages I want to use that reside out of nixpkgs or don't
     # have the settings I want.
@@ -94,7 +93,7 @@ in
                                               x265             = pkgs.x265;
                                               zlib             = pkgs.zlib;
                                               SDL2             = pkgs.SDL2;
-                                            };
+                                           };
     SDL_mixer  = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
     SDL2_mixer = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
     obs-studio = self.obs-studio.override  { pulseaudioSupport = true; };
