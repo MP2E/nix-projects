@@ -16,6 +16,7 @@ let
   normalPackage = p: callPackage (normalProjectDir + p) {};
   normalPackage32 = p: callPackage_i686 (normalProjectDir + p) {};
   normalPackageS = s: p: s.callPackage (normalProjectDir + p) {};
+  normalPackageO = p: v: callPackage (normalProjectDir + p) v;
   normalPackageC = s: p: v: s.callPackage (normalProjectDir + p) v;
 
   # Custom dev package function
@@ -24,6 +25,9 @@ let
 
 in
 { allowUnfree = true;
+  permittedInsecurePackages = [
+    "webkitgtk-2.4.11"
+  ];
   packageOverrides = self: rec {
     # Haskell packages I want to use that reside out of nixpkgs or don't
     # have the settings I want.
@@ -60,7 +64,7 @@ in
     sixpair      = normalPackage "sixpair";
     doom64ex     = normalPackage "doom64ex";
     wadgen       = normalPackage "wadgen";
-    slade        = normalPackage "slade";
+    slade        = normalPackageO "slade" { wxGTK30 = pkgs.wxGTK30.override { withWebKit = true; }; };
     zdbsp        = normalPackage "zdbsp";
     strife       = normalPackage "strife-ve";
 

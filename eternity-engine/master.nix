@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   name = "eternity-engine-20170408";
-  src = ~/eternitygit
+  src = ~/eternitygit;
 
   nativeBuildInputs = [ cmake makeWrapper ];
   buildInputs = [ mesa SDL SDL_mixer SDL_net ];

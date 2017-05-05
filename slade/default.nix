@@ -1,14 +1,15 @@
-{ stdenv, fetchgit, cmake, wxGTK30, gtk2, freetype, ftgl, sfml, fluidsynth, libmodplug, freeimage, p7zip, zlib, bzip2, mesa, glew, pkgconfig }:
+{ stdenv, fetchFromGitHub, cmake, wxGTK30, gtk2, freetype, ftgl, sfml, fluidsynth, libmodplug, freeimage, p7zip, zlib, bzip2, mesa, glew, pkgconfig, curl, pcre, libpthreadstubs }:
 
 stdenv.mkDerivation {
-  name = "slade-20150527";
-  src = fetchgit {
-    url = https://github.com/sirjuddington/SLADE;
-    rev = "78ab9df4cb2449798ae605cd073c7a11a131f402";
-    sha256 = "18nnmb1y3dkhhapizywrmrkyzzv88cjg1j6f1avwflwhgcfbcwid";
+  name = "slade-20170425";
+  src = fetchFromGitHub {
+    owner = "sirjuddington";
+    repo = "SLADE";
+    rev = "8d4e7f122a8d4f89247508ebf1abbff742a2082a";
+    sha256 = "0lflxzkh1dqdiasjpmkw3x7px39ag18szclkri6jp4h8kbxkl449";
   };
 
-  buildInputs = [ cmake wxGTK30 gtk2 freetype ftgl glew sfml fluidsynth libmodplug freeimage p7zip zlib bzip2 mesa pkgconfig ];
+  buildInputs = [ cmake wxGTK30 gtk2 freetype ftgl glew sfml fluidsynth libmodplug freeimage p7zip zlib bzip2 mesa pkgconfig curl pcre libpthreadstubs ];
 
   enableParallelBuilding = true;
 
