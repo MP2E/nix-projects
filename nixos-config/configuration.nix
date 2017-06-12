@@ -101,6 +101,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
       ubuntu_font_family  # Ubuntu fonts
       unifont # some international languages
       dejavu_fonts
+      source-code-pro
    ];
   };
 

@@ -51,14 +51,14 @@ in
       QuickCheck deepseq deepseq-generics hspec optparse-applicative
       bytestring pipes turtle foldl cereal OpenGL GLUT
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
-      # ghci-ng ghc-mod stylish-haskell
+      intero stack
       xmonad xmonad-contrib xmobar
       corrode
     ]);
 
-    jsEnv = haskell.packages.ghcjs.ghcWithPackages (p: with p; [
-      reflex reflex-dom ghcjs-dom
-    ]);
+#   jsEnv = haskell.packages.ghcjs.ghcWithPackages (p: with p; [
+#     reflex reflex-dom ghcjs-dom
+#   ]);
 
     # Packages that aren't Haskell packages.
     sixpair      = normalPackage "sixpair";
@@ -77,6 +77,7 @@ in
 
     # Package overrides
     ffmpeg     = self.ffmpeg-full.override {
+#                                             enableLto        = true;
                                               nonfreeLicensing = true;
                                               alsaLib          = pkgs.alsaLib;
                                               fdkaacExtlib     = true;
