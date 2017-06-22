@@ -12,13 +12,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
       /etc/nixos/hardware-configuration.nix
     ];
 
-  # custom mount points
-  fileSystems."/mnt/vault" =
-    { device = "/dev/disk/by-label/TheVault";
-      fsType = "ntfs";
-      options = [ "defaults" ];
-    };
-
   services.udev.extraRules = ''
     ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" TAG+="uaccess"
   '';
@@ -28,14 +21,8 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   boot.loader.grub.version = 2;
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.extraEntries =
-    ''
-    menuentry "Windows 10" {
-      chainloader (hd0,1)+1
-    }
-    '';
 
-  networking.hostName = "applicative"; # Define your hostname.
+  networking.hostName = "comonad"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
@@ -79,7 +66,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     emacs
     tmux
     htop
-    irssi
     rxvt_unicode
     chromium
     cups
@@ -89,6 +75,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     xlsfonts
     xclip
     bluez5
+    ntfs3g
   ];
 
   # make sure fonts are available!
@@ -129,7 +116,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";
   services.xserver.desktopManager.default = "none";
-  services.xserver.videoDrivers = [ "nvidiaBeta" ];
+  services.xserver.videoDrivers = [ "intel" ];
   services.compton.enable = true;
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
@@ -149,7 +136,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   hardware.bluetooth.enable = true;
-  hardware.mwProCapture.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {

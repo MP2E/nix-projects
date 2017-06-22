@@ -33,12 +33,10 @@ in
     # have the settings I want.
     ownHaskellPackages = ver : recurseIntoAttrs (ver.override {
       overrides = se : su : rec {
-        divebot          = haskellPackage se "divebot";
         # needed for xmonad master
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
         total            = doJailbreak su.total;
-        corrode          = haskellPackage se "corrode";
       };
     });
 
@@ -53,12 +51,11 @@ in
       hlint cabal-install hoogle yesod yesod-bin djinn alex happy
       intero stack
       xmonad xmonad-contrib xmobar
-      corrode
     ]);
 
-#   jsEnv = haskell.packages.ghcjs.ghcWithPackages (p: with p; [
-#     reflex reflex-dom ghcjs-dom
-#   ]);
+    jsEnv = haskell.packages.ghcjs.ghcWithPackages (p: with p; [
+      reflex reflex-dom ghcjs-dom
+    ]);
 
     # Packages that aren't Haskell packages.
     sixpair      = normalPackage "sixpair";
