@@ -20,7 +20,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     };
 
   services.udev.extraRules = ''
-    ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" GROUP="wheel"
+    ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" TAG+="uaccess"
   '';
 
   # Use the GRUB 2 boot loader.
@@ -36,6 +36,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     '';
 
   networking.hostName = "applicative"; # Define your hostname.
+  networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
   i18n = {
@@ -108,7 +109,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -129,6 +130,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   services.xserver.windowManager.default = "xmonad";
   services.xserver.desktopManager.default = "none";
   services.xserver.videoDrivers = [ "nvidiaBeta" ];
+  services.compton.enable = true;
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
