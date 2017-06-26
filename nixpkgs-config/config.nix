@@ -75,6 +75,16 @@ in
     nestopiaMaster      = devPackage "nestopia";
     mgbaMaster          = devPackageC libsForQt5 "mgba" {};
 
+    wineStaging = self.winePackages.full.override {
+      wineRelease = "staging";
+      wineBuild = "wineWow";
+      gstreamerSupport = false;
+    };
+
+    winetricks = self.winetricks.override {
+      wine = wineStaging;
+    };
+
     # Package overrides
     ffmpeg     = self.ffmpeg-full.override {
 #                                             enableLto        = true;
