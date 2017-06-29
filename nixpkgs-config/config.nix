@@ -37,6 +37,7 @@ in
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
         total            = doJailbreak su.total;
+        brick            = haskellPackage se "brick";
       };
     });
 

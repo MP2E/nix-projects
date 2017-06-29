@@ -45,6 +45,9 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
+      xmonadEnv = myHaskellPackages.ghcWithPackages (p: with p; [
+        xmonad xmonad-contrib xmonad-extras xmobar
+      ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;
@@ -76,6 +79,8 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     xclip
     bluez5
     ntfs3g
+
+    xmonadEnv
   ];
 
   # make sure fonts are available!
