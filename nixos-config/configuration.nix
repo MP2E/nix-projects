@@ -55,9 +55,15 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
               xmonad-extras = doJailbreak su.xmonad-extras;
+              apply-refact = se.callPackage ../haskell-projects/apply-refact {};
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
+      ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
+        xmonad xmonad-contrib xmonad-extras xmobar # needed for xmonad
+        apply-refact hlint stylish-haskell hasktags hoogle ghc-mod # spacemacs haskell layer
+        pretty-show # .ghci pretty printing support
+      ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;
@@ -89,6 +95,8 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     xlsfonts
     xclip
     bluez5
+
+    ghcEnv
   ];
 
   # make sure fonts are available!
