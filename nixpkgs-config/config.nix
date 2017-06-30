@@ -38,6 +38,7 @@ in
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
         total            = doJailbreak su.total;
         brick            = haskellPackage se "brick";
+        apply-refact     = haskellPackage se "apply-refact";
       };
     });
 
