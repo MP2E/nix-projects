@@ -55,7 +55,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
               xmonad-extras = doJailbreak su.xmonad-extras;
-              apply-refact = se.callPackage ../haskell-projects/apply-refact {};
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc802;
