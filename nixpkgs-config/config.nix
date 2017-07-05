@@ -25,9 +25,6 @@ let
 
 in
 { allowUnfree = true;
-  permittedInsecurePackages = [
-    "webkitgtk-2.4.11"
-  ];
   packageOverrides = self: rec {
     # Haskell packages I want to use that reside out of nixpkgs or don't
     # have the settings I want.
