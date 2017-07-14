@@ -81,6 +81,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
     xclip
     bluez5
     ntfs3g
+    exfat
 
     ghcEnv
   ];
@@ -113,6 +114,22 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
   # services.xserver.autorun = false;
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
+
+  services.xserver.xrandrHeads = [
+  {output = "eDP1"; primary = true; monitorConfig = ''
+     Option "PreferredMode" "1366x768_60.00"
+   '';}
+  {output = "HDMI1"; monitorConfig = ''
+     Option "PreferredMode" "1280x720_60.00"
+     Option "RightOf" "eDP1"
+   '';}
+  ];
+
+  # enable touchpad
+  services.xserver.synaptics.enable = true;
+
+  # important for work!
+  services.teamviewer.enable = true;
 
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.kdm.enable = true;
