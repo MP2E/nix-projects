@@ -35,6 +35,7 @@ in
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
         total            = doJailbreak su.total;
         brick            = su.brick_0_19;
+        cabal2nix        = haskellPackage se "cabal2nix";
       };
     });
 
