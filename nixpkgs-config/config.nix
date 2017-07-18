@@ -37,6 +37,7 @@ in
         total            = doJailbreak su.total;
         corrode          = haskellPackage se "corrode";
         brick            = su.brick_0_19;
+        cabal2nix        = haskellPackage se "cabal2nix";
       };
     });
 
