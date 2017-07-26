@@ -1,6 +1,6 @@
 { mkDerivation, array, base, bytestring, containers, filepath
-, language-c_0_6_1, markdown-unlit, pretty, stdenv, tasty
-, tasty-quickcheck, transformers, happy, alex
+, language-c, markdown-unlit, pretty, stdenv, tasty
+, tasty-quickcheck, transformers
 }:
 mkDerivation {
   pname = "corrode";
@@ -9,11 +9,11 @@ mkDerivation {
   isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [
-    array base containers language-c_0_6_1 markdown-unlit pretty transformers
+    array base containers language-c markdown-unlit pretty transformers
   ];
   executableHaskellDepends = [
-    base bytestring filepath language-c_0_6_1 markdown-unlit pretty
-    transformers happy alex
+    base bytestring filepath language-c markdown-unlit pretty
+    transformers
   ];
   testHaskellDepends = [
     base containers pretty tasty tasty-quickcheck transformers

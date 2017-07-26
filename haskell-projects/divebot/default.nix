@@ -8,7 +8,7 @@ mkDerivation {
   src = /home/cray/divebot;
   isLibrary = false;
   isExecutable = true;
-  buildDepends = [
+  executableHaskellDepends = [
     base bytestring cereal cereal-text containers exceptions lens mtl
     network random text text-format text-show time
   ];
