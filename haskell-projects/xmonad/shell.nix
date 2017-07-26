@@ -24,9 +24,8 @@ let
         ];
         postInstall = ''
           shopt -s globstar
-          mkdir -p $doc/share/man/man1
-          mv "$data/"**"/man/"*[0-9] $doc/share/man/man1/
-          rm "$data/"**"/man/"*
+          mkdir -p $out/share/man/man1
+          mv "$out/"**"/man/"*.1 $out/share/man/man1/
         '';
         homepage = "http://xmonad.org";
         description = "A tiling window manager";

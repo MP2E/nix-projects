@@ -6,7 +6,6 @@ mkDerivation {
   pname = "xmonad-contrib";
   version = "0.13";
   src = /home/cray/XMonadContrib;
-  hasDataDir = false;
   libraryHaskellDepends = [
     base bytestring containers directory extensible-exceptions filepath
     mtl old-locale old-time process random unix utf8-string X11 X11-xft
