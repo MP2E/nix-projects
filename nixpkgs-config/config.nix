@@ -39,6 +39,12 @@ in
         brick            = super.brick_0_19;
         cabal2nix        = haskellPackage se "cabal2nix";
 
+        timezone-series = super.timezone-series_0_1_8;
+        hint = super.hint_0_7_0;
+        integer-logarithms = dontCheck (doJailbreak super.integer-logarithms_1_0_2);
+        libmpd = se.callPackage ../haskell-projects/libmpd {};
+
+
         # overrides below copied from:
         # https://gist.github.com/nh2/a6de5e5409c8893d67ef444a7664ed98
 
