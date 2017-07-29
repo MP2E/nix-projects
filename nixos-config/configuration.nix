@@ -56,10 +56,6 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
               xmonad-extras = doJailbreak super.xmonad-extras;
 
-
-              timezone-series = super.timezone-series_0_1_8;
-              hint = super.hint_0_7_0;
-              integer-logarithms = dontCheck (doJailbreak super.integer-logarithms_1_0_2);
               libmpd = se.callPackage ../haskell-projects/libmpd {};
 
               # overrides below copied from:
