@@ -2,9 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
-with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkgs; };
+{ config, pkgs, haskellLib, fetchgit, ... }:
 
 {
   imports =
@@ -54,7 +52,7 @@ with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkg
               # needed for xmonad master to configure
               xmonad = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
-              xmonad-extras = doJailbreak super.xmonad-extras;
+              xmonad-extras = pkgs.haskell.lib.doJailbreak super.xmonad-extras;
 
               libmpd = se.callPackage ../haskell-projects/libmpd {};
 

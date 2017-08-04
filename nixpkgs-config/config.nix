@@ -1,6 +1,5 @@
 { pkgs }:
 
-with import ../../nixpkgs/pkgs/development/haskell-modules/lib.nix { inherit pkgs; };
 with pkgs;
 let
   # Directories where I'll store extra packages.
@@ -34,7 +33,7 @@ in
         # needed for xmonad master
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
-        total            = doJailbreak super.total;
+        total            = pkgs.haskell.lib.doJailbreak super.total;
         corrode          = haskellPackage se "corrode";
         brick            = super.brick_0_19;
         cabal2nix        = haskellPackage se "cabal2nix";
