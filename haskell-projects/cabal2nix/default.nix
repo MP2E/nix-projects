@@ -7,7 +7,7 @@
 }:
 mkDerivation {
   pname = "cabal2nix";
-  version = "2.4";
+  version = "2.4.1";
   src = /home/cray/cabal2nix;
   isLibrary = true;
   isExecutable = true;
