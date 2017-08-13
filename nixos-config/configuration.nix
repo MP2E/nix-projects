@@ -187,6 +187,10 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # enable nix binary cache access via SSH
+  nix.sshServe.enable = true;
+  nix.sshServe.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+nty00k0yUsHIzPN86SvBrBYhQnRYVPLTIFkrX4s37d+ho6h/bVqgTfsmNxx1thbBST90j4Kybd37pPWTvUFQfNdl6fesplu2zwlNpB7Tjgu4gl96i+OTOQABgWKGT3ZZyTbA7Sx8OEvLPd37/ugwzIHXgK3lSTgnZcaICP1QnOADtaMAZ/O+f5Gi+hLijMOoYh//h1+TgxH85k24eryQ1KrfiHAyeFuuWuYwCMRM4XqKQ6zw3Q+EYf/hGcS5QjEYb2uyzQ4T8vZR7nyDA8bUH1m2ENNjAYOzG1JmQn6mqzVtHRMlvmU413mj9VqORpNMR6tE7Ifn/59xQQWbfJN7 MP2E@archlinux.us" ];
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
