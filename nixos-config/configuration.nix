@@ -175,6 +175,8 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  programs.ssh.startAgent = true;
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -198,7 +200,7 @@
   services.xserver.synaptics.enable = true;
 
   # important for work!
-  services.teamviewer.enable = true;
+  # services.teamviewer.enable = true;
 
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.kdm.enable = true;
@@ -217,7 +219,10 @@
   # virtualisation.virtualbox.host.enable = true;
 
   nix.useSandbox = true;
-  nix.extraOptions = "auto-optimize-store = true";
+  nix.extraOptions = ''
+                       auto-optimize-store = true
+                       trusted-users = root @wheel
+                     '';
 
   programs.zsh.enable = true;
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
