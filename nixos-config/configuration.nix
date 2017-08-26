@@ -45,8 +45,8 @@
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc821;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmonad-extras xmobar # needed for xmonad
-#       apply-refact hlint stylish-haskell hasktags hoogle ghc-mod # spacemacs haskell layer
-#       pretty-show # .ghci pretty printing support
+        apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
+        pretty-show hscolour # .ghci pretty printing support
       ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
