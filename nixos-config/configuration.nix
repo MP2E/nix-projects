@@ -20,6 +20,16 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda";
 
+  # help GHC team find xmobar crash cause by enabling core dumps
+  systemd.coredump.enable = true;
+  security.pam.loginLimits =
+    [ { domain = "*";
+        type   = "soft";
+        item   = "core";
+        value  = "500";
+      }
+    ];
+
   networking.hostName = "comonad"; # Define your hostname.
   networking.networkmanager.enable = true;
 
@@ -65,6 +75,7 @@
       enablePepperFlash = true;
       jre = true;
     };
+    virtualbox.enableExtensionPack = true;
   };
 
   # List packages installed in system profile. To search by name, run:
@@ -154,7 +165,7 @@
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
-  # virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enable = true;
 
   nix.useSandbox = true;
   nix.extraOptions = ''
@@ -176,7 +187,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {
     name = "cray";
-    extraGroups = [ "wheel" "audio" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "networkmanager" "vboxusers" ];
     createHome = true;
     home = "/home/cray";
     shell = "/var/run/current-system/sw/bin/zsh";
