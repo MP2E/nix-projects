@@ -87,9 +87,6 @@ in
       wine = wineStaging;
     };
 
-    # workaround needed for mesa + steam currently
-    steam = self.steam.override { newStdcpp = true; };
-
     # Package overrides
     ffmpeg     = self.ffmpeg-full.override {
 #                                             enableLto        = true;
