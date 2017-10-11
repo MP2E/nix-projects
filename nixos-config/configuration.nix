@@ -51,13 +51,6 @@
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
               xmonad-extras = pkgs.haskell.lib.doJailbreak su.xmonad-extras;
 
-              quickcheck-instances = su.quickcheck-instances_0_3_16;
-              QuickCheck = su.QuickCheck_2_10_0_1;
-              extra = su.extra_1_6;
-              ChasingBottoms = se.callPackage ../haskell-projects/ChasingBottoms {};
-              foundation = pkgs.haskell.lib.dontCheck su.foundation;
-              attoparsec = pkgs.haskell.lib.dontCheck su.attoparsec;
-              libmpd = pkgs.haskell.lib.dontCheck su.libmpd;
               ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
             };
           });
@@ -76,6 +69,7 @@
       jre = true;
     };
     virtualbox.enableExtensionPack = true;
+    project_paintball = callPackage ../fonts/project-paintball {};
   };
 
   # List packages installed in system profile. To search by name, run:
@@ -116,6 +110,7 @@
       unifont # some international languages
       dejavu_fonts
       source-code-pro
+      project_paintball # splatoon font
    ];
   };
 
