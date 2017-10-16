@@ -63,13 +63,13 @@
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;
+      project_paintball = pkgs.callPackage ../fonts/project-paintball {};
     };
     chromium = {
       enablePepperFlash = true;
       jre = true;
     };
     virtualbox.enableExtensionPack = true;
-    project_paintball = callPackage ../fonts/project-paintball {};
   };
 
   # List packages installed in system profile. To search by name, run:
