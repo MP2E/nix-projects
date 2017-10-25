@@ -54,13 +54,6 @@
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
               xmonad-extras = pkgs.haskell.lib.doJailbreak su.xmonad-extras;
 
-#             quickcheck-instances = su.quickcheck-instances_0_3_16;
-#             QuickCheck = su.QuickCheck_2_10_0_1;
-#             extra = su.extra_1_6;
-#             ChasingBottoms = se.callPackage ../haskell-projects/ChasingBottoms {};
-#             foundation = pkgs.haskell.lib.dontCheck su.foundation;
-#             attoparsec = pkgs.haskell.lib.dontCheck su.attoparsec;
-#             libmpd = pkgs.haskell.lib.dontCheck su.libmpd;
               ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
             };
           });
@@ -150,6 +143,7 @@
   services.xserver.desktopManager.default = "none";
   services.xserver.videoDrivers = [ "nvidia" ];
   services.compton.enable = true;
+  services.compton.backend = "glx";
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
