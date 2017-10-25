@@ -1,4 +1,4 @@
-{ stdenv
+{ stdenv, lib
 , pkgconfig, cmake, libzip, epoxy, ffmpeg, imagemagick, SDL2
 , qtbase, qtmultimedia }:
 

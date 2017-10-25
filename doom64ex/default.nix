@@ -1,4 +1,4 @@
-{ stdenv, cmake, SDL2, SDL2_net, fluidsynth, zlib, libpng, mesa, pkgconfig }:
+{ stdenv, lib, cmake, SDL2, SDL2_net, fluidsynth, zlib, libpng, mesa, pkgconfig }:
 
 stdenv.mkDerivation {
   name = "doom64ex-2.6";
