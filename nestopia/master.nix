@@ -1,4 +1,4 @@
-{ stdenv, cmake, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, glew, makeWrapper
+{ stdenv, lib, cmake, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, glew, makeWrapper
 , mesa, libarchive, libao, unzip, xdg_utils, gsettings_desktop_schemas, epoxy }:
 
 stdenv.mkDerivation rec {

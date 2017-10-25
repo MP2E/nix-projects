@@ -1,4 +1,4 @@
-{ stdenv, autoconf, automake, pkgconfig, SDL2, SDL2_mixer, SDL2_net }:
+{ stdenv, lib, autoconf, automake, pkgconfig, SDL2, SDL2_mixer, SDL2_net }:
 
 stdenv.mkDerivation rec {
   name = "chocolate-doom-20171025";

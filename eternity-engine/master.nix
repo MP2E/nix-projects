@@ -1,4 +1,4 @@
-{ stdenv, cmake, mesa_noglu, SDL, SDL_mixer, SDL_net, makeWrapper }:
+{ stdenv, lib, cmake, mesa_noglu, SDL, SDL_mixer, SDL_net, makeWrapper }:
 
 stdenv.mkDerivation rec {
   name = "eternity-engine-${version}";
