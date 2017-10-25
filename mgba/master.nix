@@ -3,9 +3,9 @@
 , qtbase, qtmultimedia }:
 
 stdenv.mkDerivation rec {
-  name = "mgba-20170409";
+  name = "mgba-20171025";
 
-  src = ~/mgba-src;
+  src = lib.cleanSource ~/mgba-src;
 
   nativeBuildInputs = [ pkgconfig cmake ];
   buildInputs = [ libzip epoxy ffmpeg imagemagick SDL2 qtbase qtmultimedia ];

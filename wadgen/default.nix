@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
   name = "wadgen-2.6";
-  src = /home/cray/wadgen;
+  src = lib.cleanSource /home/cray/wadgen;
 
   buildInputs = [ cmake zlib libpng pkgconfig ];
 

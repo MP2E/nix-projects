@@ -54,7 +54,7 @@
               ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc821;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc822;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmonad-extras xmobar # needed for xmonad
         apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer

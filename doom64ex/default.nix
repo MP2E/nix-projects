@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
   name = "doom64ex-2.6";
-  src = /home/cray/kexplus;
+  src = lib.cleanSource /home/cray/kexplus;
 
   buildInputs = [ cmake SDL2 SDL2_net fluidsynth zlib libpng mesa pkgconfig ];
 

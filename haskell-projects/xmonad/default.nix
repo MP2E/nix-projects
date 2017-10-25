@@ -5,7 +5,7 @@
 mkDerivation {
   pname = "xmonad";
   version = "0.13";
-  src = /home/cray/xmonad;
+  src = lib.cleanSource /home/cray/xmonad;
   isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [
