@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   name = "sixpair";
-  src = ./.;
+  src = lib.cleanSource ./.;
 
   phases = "installPhase";
 
