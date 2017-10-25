@@ -155,8 +155,9 @@
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";
   services.xserver.desktopManager.default = "none";
-  services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.videoDrivers = [ "modesetting" ];
   services.compton.enable = true;
+  services.compton.backend = "glx";
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
