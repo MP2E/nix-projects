@@ -1,4 +1,4 @@
-{ nixpkgs ? import <nixpkgs> {}, compiler ? "default" }:
+{ nixpkgs ? import <nixpkgs> {}, compiler ? "default", doBenchmark ? false }:
 
 let
 
@@ -14,6 +14,7 @@ let
         src = lib.cleanSource /home/cray/xmonad;
         isLibrary = true;
         isExecutable = true;
+        enableSeparateDataOutput = true;
         libraryHaskellDepends = [
           base containers data-default directory extensible-exceptions
           filepath mtl process setlocale unix utf8-string X11
@@ -24,8 +25,9 @@ let
         ];
         postInstall = ''
           shopt -s globstar
-          mkdir -p $out/share/man/man1
-          mv "$out/"**"/man/"*.1 $out/share/man/man1/
+          mkdir -p $doc/share/man/man1
+          mv "$data/"**"/man/"*[0-9] $doc/share/man/man1/
+          rm "$data/"**"/man/"*
         '';
         homepage = "http://xmonad.org";
         description = "A tiling window manager";
@@ -36,7 +38,9 @@ let
                        then pkgs.haskellPackages
                        else pkgs.haskell.packages.${compiler};
 
-  drv = haskellPackages.callPackage f {};
+  variant = if doBenchmark then pkgs.haskell.lib.doBenchmark else pkgs.lib.id;
+
+  drv = variant (haskellPackages.callPackage f {});
 
 in
 
