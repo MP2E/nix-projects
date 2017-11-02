@@ -1,4 +1,4 @@
-{ stdenv, cmake, zlib, libpng, pkgconfig }:
+{ stdenv, lib, cmake, zlib, libpng, pkgconfig }:
 
 stdenv.mkDerivation {
   name = "wadgen-2.6";

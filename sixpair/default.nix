@@ -1,4 +1,4 @@
-{ stdenv, libusb }:
+{ stdenv, lib, libusb }:
 
 stdenv.mkDerivation rec {
   name = "sixpair";
