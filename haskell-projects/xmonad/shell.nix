@@ -35,7 +35,7 @@ let
       };
 
   haskellPackages = if compiler == "default"
-                       then pkgs.haskellPackages
+                       then pkgs.myHaskellPackages
                        else pkgs.haskell.packages.${compiler};
 
   variant = if doBenchmark then pkgs.haskell.lib.doBenchmark else pkgs.lib.id;
