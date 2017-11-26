@@ -68,10 +68,6 @@
       linuxPackages = pkgs.linuxPackages_latest;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
     };
-    chromium = {
-      enablePepperFlash = true;
-      jre = true;
-    };
   };
 
   # List packages installed in system profile. To search by name, run:
@@ -86,7 +82,7 @@
     tmux
     htop
     rxvt_unicode
-    chromium
+    firefox
     cups
     dmenu
     vim
