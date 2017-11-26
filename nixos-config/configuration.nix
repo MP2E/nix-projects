@@ -65,10 +65,6 @@
       linuxPackages = pkgs.linuxPackages_latest;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
     };
-    chromium = {
-      enablePepperFlash = true;
-      jre = true;
-    };
     virtualbox.enableExtensionPack = true;
   };
 
@@ -84,7 +80,7 @@
     tmux
     htop
     rxvt_unicode
-    chromium
+    firefox
     cups
     dmenu
     vim
