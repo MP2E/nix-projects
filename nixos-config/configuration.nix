@@ -63,7 +63,6 @@
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;
-      project_paintball = pkgs.callPackage ../fonts/project-paintball {};
     };
     virtualbox.enableExtensionPack = true;
   };
@@ -106,7 +105,6 @@
       unifont # some international languages
       dejavu_fonts
       source-code-pro
-      project_paintball # splatoon font
    ];
   };
 
@@ -127,12 +125,12 @@
   # services.xserver.xkbOptions = "eurosign:e";
 
   services.xserver.xrandrHeads = [
-  {output = "eDP1"; primary = true; monitorConfig = ''
+  {output = "eDP-1"; primary = true; monitorConfig = ''
      Option "PreferredMode" "1366x768_60.00"
    '';}
-  {output = "HDMI1"; monitorConfig = ''
+  {output = "HDMI-1"; monitorConfig = ''
      Option "PreferredMode" "1280x720_60.00"
-     Option "RightOf" "eDP1"
+     Option "RightOf" "eDP-1"
    '';}
   ];
 
@@ -140,7 +138,7 @@
   services.xserver.synaptics.enable = true;
 
   # important for work!
-  # services.teamviewer.enable = true;
+  services.teamviewer.enable = true;
 
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.kdm.enable = true;
