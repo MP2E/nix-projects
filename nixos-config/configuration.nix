@@ -85,7 +85,7 @@
     firefox
     cups
     dmenu
-    vim
+    vimHugeX
     xfontsel
     xlsfonts
     xclip
