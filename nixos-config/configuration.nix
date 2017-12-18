@@ -138,7 +138,7 @@
   services.xserver.synaptics.enable = true;
 
   # important for work!
-  services.teamviewer.enable = true;
+  # services.teamviewer.enable = true;
 
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.kdm.enable = true;
