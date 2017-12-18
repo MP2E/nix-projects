@@ -82,7 +82,7 @@ in
 
     # Package overrides
     ffmpeg     = self.ffmpeg-full.override {
-#                                             enableLto        = true;
+                                              enableLto        = true;
                                               nonfreeLicensing = true;
                                               alsaLib          = pkgs.alsaLib;
                                               fdkaacExtlib     = true;
