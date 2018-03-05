@@ -64,8 +64,8 @@
         pretty-show hscolour # .ghci pretty printing support
       ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
-      linux = pkgs.linuxPackages_latest.kernel;
-      linuxPackages = pkgs.linuxPackages_latest;
+      linux = pkgs.linuxPackages_4_14.kernel;
+      linuxPackages = pkgs.linuxPackages_4_14;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
     };
   };
@@ -146,7 +146,6 @@
   # virtualisation.virtualbox.host.enable = true;
 
   nix.useSandbox = true;
-  nix.extraOptions = "auto-optimize-store = true";
 
   programs.zsh.enable = true;
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
