@@ -61,10 +61,10 @@
         pretty-show hscolour # .ghci pretty printing support
       ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
-      linux = pkgs.linuxPackages_latest.kernel;
-      linuxPackages = pkgs.linuxPackages_latest;
+      linux = pkgs.linuxPackages_4_14.kernel;
+      linuxPackages = pkgs.linuxPackages_4_14;
     };
-    virtualbox.enableExtensionPack = true;
+#   virtualbox.enableExtensionPack = true;
   };
 
   # List packages installed in system profile. To search by name, run:
@@ -80,6 +80,7 @@
     htop
     rxvt_unicode
     firefox
+    chromium
     cups
     dmenu
     vimHugeX
@@ -155,13 +156,9 @@
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation.virtualbox.host.enable = true;
+# virtualisation.virtualbox.host.enable = true;
 
   nix.useSandbox = true;
-  nix.extraOptions = ''
-                       auto-optimize-store = true
-                       trusted-users = root @wheel
-                     '';
 
   programs.zsh.enable = true;
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
