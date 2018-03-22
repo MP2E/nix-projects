@@ -6,7 +6,7 @@ let
 
   f = { mkDerivation, lib, base, containers, data-default, directory
       , extensible-exceptions, filepath, mtl, process, QuickCheck
-      , setlocale, stdenv, unix, utf8-string, X11
+      , semigroups, setlocale, stdenv, unix, utf8-string, X11
       }:
       mkDerivation {
         pname = "xmonad";
@@ -17,7 +17,7 @@ let
         enableSeparateDataOutput = true;
         libraryHaskellDepends = [
           base containers data-default directory extensible-exceptions
-          filepath mtl process setlocale unix utf8-string X11
+          filepath mtl process semigroups setlocale unix utf8-string X11
         ];
         executableHaskellDepends = [ base mtl unix X11 ];
         testHaskellDepends = [
