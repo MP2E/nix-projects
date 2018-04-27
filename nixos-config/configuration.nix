@@ -52,13 +52,15 @@
               xmonad-extras = pkgs.haskell.lib.doJailbreak su.xmonad-extras;
 
               ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
+
+              hint = se.callPackage ../haskell-projects/hint {};
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc822;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc842;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmonad-extras xmobar # needed for xmonad
-        apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
-        pretty-show hscolour # .ghci pretty printing support
+#       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
+#       pretty-show hscolour # .ghci pretty printing support
       ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_4_14.kernel;
