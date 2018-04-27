@@ -24,6 +24,9 @@ let
 
 in
 { allowUnfree = true;
+  permittedInsecurePackages = [
+    "mono-4.0.4.1"
+  ];
   packageOverrides = self: rec {
     # Haskell packages I want to use that reside out of nixpkgs or don't
     # have the settings I want.
@@ -34,12 +37,13 @@ in
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
         xmonad-extras    = pkgs.haskell.lib.doJailbreak su.xmonad-extras;
 
-        ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
+        ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
+        hint             = haskellPackage se "hint";
       };
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc822;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc842;
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
