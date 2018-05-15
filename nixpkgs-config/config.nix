@@ -39,6 +39,7 @@ in
 
         ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
         hint             = haskellPackage se "hint";
+        exceptions       = su.exceptions_0_10_0;
       };
     });
 
@@ -76,7 +77,7 @@ in
     mgbaMaster          = devPackageC libsForQt5 "mgba" {};
 
     wineStaging = self.winePackages.full.override {
-      wineRelease = "stable";
+      wineRelease = "staging";
       wineBuild = "wineWow";
     };
 

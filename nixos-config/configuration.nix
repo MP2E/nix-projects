@@ -50,20 +50,21 @@
       ownHaskellPackages = ver : pkgs.recurseIntoAttrs (ver.override {
         overrides = se : su : rec {
               # needed for xmonad master to configure
-              xmonad = se.callPackage ../haskell-projects/xmonad {};
+              xmonad         = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
-              xmonad-extras = pkgs.haskell.lib.doJailbreak su.xmonad-extras;
+              xmonad-extras  = pkgs.haskell.lib.doJailbreak su.xmonad-extras;
 
               ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
 
-              hint = se.callPackage ../haskell-projects/hint {};
+              hint           = se.callPackage ../haskell-projects/hint {};
+              exceptions     = su.exceptions_0_10_0;
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc842;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmonad-extras xmobar # needed for xmonad
-#       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
-#       pretty-show hscolour # .ghci pretty printing support
+        apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
+        pretty-show hscolour # .ghci pretty printing support
       ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_4_14.kernel;
@@ -120,7 +121,7 @@
   # enable nix binary cache access via SSH
   nix.sshServe.enable = true;
   nix.sshServe.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+nty00k0yUsHIzPN86SvBrBYhQnRYVPLTIFkrX4s37d+ho6h/bVqgTfsmNxx1thbBST90j4Kybd37pPWTvUFQfNdl6fesplu2zwlNpB7Tjgu4gl96i+OTOQABgWKGT3ZZyTbA7Sx8OEvLPd37/ugwzIHXgK3lSTgnZcaICP1QnOADtaMAZ/O+f5Gi+hLijMOoYh//h1+TgxH85k24eryQ1KrfiHAyeFuuWuYwCMRM4XqKQ6zw3Q+EYf/hGcS5QjEYb2uyzQ4T8vZR7nyDA8bUH1m2ENNjAYOzG1JmQn6mqzVtHRMlvmU413mj9VqORpNMR6tE7Ifn/59xQQWbfJN7 MP2E@archlinux.us" ];
-  nix.sshServe.protocol = "ssh-ng";
+# nix.sshServe.protocol = "ssh-ng";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -160,7 +161,7 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   hardware.bluetooth.enable = true;
-  hardware.datapathVision.enable = true;
+# hardware.datapathVision.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {
