@@ -40,6 +40,7 @@ in
         ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
         hint             = haskellPackage se "hint";
         exceptions       = su.exceptions_0_10_0;
+        apply-refact     = su.apply-refact_0_5_0_0;
       };
     });
 

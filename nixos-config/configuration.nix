@@ -55,6 +55,7 @@
 
               hint           = se.callPackage ../haskell-projects/hint {};
               exceptions     = su.exceptions_0_10_0;
+              apply-refact   = su.apply-refact_0_5_0_0;
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc842;
@@ -173,6 +174,9 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   hardware.bluetooth.enable = true;
+
+  system.nixos.stateVersion = "18.09";
+  services.nixosManual.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {
