@@ -49,7 +49,7 @@
               # needed for xmonad master to configure
               xmonad         = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
-              xmonad-extras  = pkgs.haskell.lib.doJailbreak su.xmonad-extras;
+              xmonad-extras  = se.callPackage ../haskell-projects/xmonad-extras {};
 
               ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
 
@@ -58,10 +58,10 @@
               apply-refact   = su.apply-refact_0_5_0_0;
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc842;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc843;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmonad-extras xmobar # needed for xmonad
-        apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
+#       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
         pretty-show hscolour # .ghci pretty printing support
       ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
@@ -165,7 +165,6 @@
   nix.useSandbox = true;
 
   programs.zsh.enable = true;
-  users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
 
   security.sudo.enable = true;
   boot.cleanTmpDir = true;
