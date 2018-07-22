@@ -52,10 +52,6 @@
               xmonad-extras  = se.callPackage ../haskell-projects/xmonad-extras {};
 
               ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
-
-              hint           = se.callPackage ../haskell-projects/hint {};
-              exceptions     = su.exceptions_0_10_0;
-              apply-refact   = su.apply-refact_0_5_0_0;
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc843;
