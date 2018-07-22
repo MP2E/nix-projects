@@ -35,7 +35,7 @@ in
         # needed for xmonad master
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
-        xmonad-extras    = pkgs.haskell.lib.doJailbreak su.xmonad-extras;
+        xmonad-extras    = haskellPackage se "xmonad-extras";
 
         ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
         hint             = haskellPackage se "hint";
@@ -45,7 +45,7 @@ in
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc842;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc843;
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
