@@ -7,9 +7,8 @@ stdenv.mkDerivation rec {
   phases = "installPhase";
 
   installPhase = ''
-  mkdir -p $out/bin
-  gcc -O2 -lusb $src/sixpair.c -o $out/bin/sixpair
-  strip -s $out/bin/sixpair
+    mkdir -p $out/bin
+    gcc -O2 -lusb $src/sixpair.c -o $out/bin/sixpair
   '';
 
   buildInputs = [ libusb ];

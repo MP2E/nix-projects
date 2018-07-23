@@ -6,6 +6,7 @@
 mkDerivation {
   pname = "xmonad-contrib";
   version = "0.13";
+  jailbreak = true;
   src = lib.cleanSource /home/cray/XMonadContrib;
   libraryHaskellDepends = [
     base bytestring containers directory extensible-exceptions filepath

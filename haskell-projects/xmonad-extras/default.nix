@@ -5,6 +5,7 @@
 mkDerivation {
   pname = "xmonad-extras";
   version = "0.13.3";
+  jailbreak = true;
   src = lib.cleanSource /home/cray/xmonad-extras;
   configureFlags = [
     "-f-with_hlist" "-fwith_parsec" "-fwith_split"

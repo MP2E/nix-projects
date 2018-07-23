@@ -8,6 +8,7 @@ mkDerivation {
   src = lib.cleanSource /home/cray/xmonad;
   isLibrary = true;
   isExecutable = true;
+  jailbreak = true;
   enableSeparateDataOutput = true;
   libraryHaskellDepends = [
     base containers data-default directory extensible-exceptions

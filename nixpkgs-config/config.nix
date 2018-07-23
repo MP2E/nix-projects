@@ -38,9 +38,6 @@ in
         xmonad-extras    = haskellPackage se "xmonad-extras";
 
         ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
-        hint             = haskellPackage se "hint";
-        exceptions       = su.exceptions_0_10_0;
-        apply-refact     = su.apply-refact_0_5_0_0;
       };
     });
 
@@ -69,6 +66,7 @@ in
     slade        = normalPackageO "slade" { wxGTK30 = pkgs.wxGTK30.override { withWebKit = true; }; };
     zdbsp        = normalPackage "zdbsp";
     strife       = normalPackage "strife-ve";
+    asar         = normalPackage "asar";
 
     # Development versions of packages
     odamexMaster        = devPackage "odamex";

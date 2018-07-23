@@ -64,8 +64,8 @@
         pretty-show hscolour # .ghci pretty printing support
       ]);
       bluez = pkgs.bluez5.override { enableWiimote = true; };
-      linux = pkgs.linuxPackages_4_14.kernel;
-      linuxPackages = pkgs.linuxPackages_4_14;
+      linux = pkgs.linuxPackages_latest.kernel;
+      linuxPackages = pkgs.linuxPackages_latest;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
     };
   };
@@ -86,8 +86,6 @@
     cups
     dmenu
     vimHugeX
-    xfontsel
-    xlsfonts
     xclip
     bluez5
 
