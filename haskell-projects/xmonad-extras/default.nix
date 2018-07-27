@@ -4,7 +4,7 @@
 }:
 mkDerivation {
   pname = "xmonad-extras";
-  version = "0.13.3";
+  version = "0.13.4";
   jailbreak = true;
   src = lib.cleanSource /home/cray/xmonad-extras;
   configureFlags = [
