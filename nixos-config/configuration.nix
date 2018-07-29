@@ -32,7 +32,7 @@
 
   networking.hostName = "comonad"; # Define your hostname.
   networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # Select internationalisation properties.
   i18n = {
