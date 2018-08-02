@@ -24,9 +24,6 @@ let
 
 in
 { allowUnfree = true;
-  permittedInsecurePackages = [
-    "mono-4.0.4.1"
-  ];
   packageOverrides = self: rec {
     # Haskell packages I want to use that reside out of nixpkgs or don't
     # have the settings I want.
@@ -36,10 +33,6 @@ in
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
         xmonad-extras    = haskellPackage se "xmonad-extras";
-
-        vty              = haskellPackage se "vty";
-        irc-core         = haskellPackage se "irc-core";
-        glirc            = haskellPackage se "glirc";
 
         ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
       };
@@ -88,7 +81,7 @@ in
     };
 
     # Package overrides
-    ffmpeg     = self.ffmpeg-full.override {
+    ffmpeg      = self.ffmpeg-full.override {
 #                                             enableLto        = true;
                                               nonfreeLicensing = true;
                                               alsaLib          = pkgs.alsaLib;
@@ -111,8 +104,9 @@ in
                                               zlib             = pkgs.zlib;
                                               SDL2             = pkgs.SDL2;
                                            };
-    SDL_mixer  = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
-    SDL2_mixer = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
-    obs-studio = self.obs-studio.override  { pulseaudioSupport = true; };
+    SDL_mixer   = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
+    SDL2_mixer  = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
+    obs-studio  = self.obs-studio.override  { pulseaudioSupport = true; };
+    reposurgeon = self.reposurgeon.override { subversion = pkgs.subversion; };
   };
 }
