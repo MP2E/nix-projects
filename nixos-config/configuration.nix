@@ -81,7 +81,6 @@
     htop
     rxvt_unicode
     firefox
-    chromium
     cups
     dmenu
     vimHugeX
@@ -154,6 +153,10 @@
   services.compton.backend = "glx";
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
+
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mysql;
+  services.mysql.dataDir = "/var/lib/mysql";
 
 # virtualisation.virtualbox.host.enable = true;
 
