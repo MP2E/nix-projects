@@ -157,6 +157,31 @@
   services.mysql.enable = true;
   services.mysql.package = pkgs.mysql;
   services.mysql.dataDir = "/var/lib/mysql";
+  services.mysql.extraOptions = ''
+    lower_case_table_names = 1
+  '';
+
+  services.nginx.enable = true;
+  services.nginx.virtualHosts."localhost" = {
+    root = "/var/www/phpmyadmin";
+    default = true;
+    locations."/".index = "index.php index.html index.htm";
+    locations."~ \.php$".extraConfig = ''
+      fastcgi_pass  127.0.0.1:9000;
+      fastcgi_index index.php;
+    '';
+  };
+
+  services.phpfpm.poolConfigs.mypool = ''
+    listen = 127.0.0.1:9000
+    user = nobody
+    pm = dynamic
+    pm.max_children = 5
+    pm.start_servers = 2
+    pm.min_spare_servers = 1
+    pm.max_spare_servers = 3
+    pm.max_requests = 500
+  '';
 
 # virtualisation.virtualbox.host.enable = true;
 
