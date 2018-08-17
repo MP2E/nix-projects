@@ -158,7 +158,7 @@
   hardware.bluetooth.enable = true;
 # hardware.datapathVision.enable = true;
 
-  nixos.stateVersion = "18.09";
+  system.stateVersion = "18.09";
   services.nixosManual.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
