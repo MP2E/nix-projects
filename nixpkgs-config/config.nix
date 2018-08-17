@@ -34,10 +34,6 @@ in
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
         xmonad-extras    = haskellPackage se "xmonad-extras";
 
-        vty              = haskellPackage se "vty";
-        irc-core         = haskellPackage se "irc-core";
-        glirc            = haskellPackage se "glirc";
-
         ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
       };
     });
