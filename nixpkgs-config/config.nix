@@ -60,13 +60,14 @@ in
     ]);
 
     # Packages that aren't Haskell packages.
-    sixpair      = normalPackage "sixpair";
-    doom64ex     = normalPackage "doom64ex";
-    wadgen       = normalPackage "wadgen";
-    slade        = normalPackageO "slade" { wxGTK30 = pkgs.wxGTK30.override { withWebKit = true; }; };
-    zdbsp        = normalPackage "zdbsp";
-    strife       = normalPackage "strife-ve";
-    asar         = normalPackage "asar";
+    sixpair        = normalPackage  "sixpair";
+    doom64ex       = normalPackage  "doom64ex";
+    wadgen         = normalPackage  "wadgen";
+    slade          = normalPackageO "slade"          { wxGTK30 = pkgs.wxGTK30.override { withWebKit = true; }; };
+    zdbsp          = normalPackage  "zdbsp";
+    strife         = normalPackage  "strife-ve";
+    asar           = normalPackage  "asar";
+    oos-randomizer = normalPackageO "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
 
     # Development versions of packages
     odamexMaster        = devPackage "odamex";
