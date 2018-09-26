@@ -32,12 +32,8 @@ in
         # needed for xmonad master
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
-        xmonad-extras    = haskellPackage se "xmonad-extras";
 
-        vty              = haskellPackage se "vty";
-        irc-core         = haskellPackage se "irc-core";
-        glirc            = haskellPackage se "glirc";
-
+        vty              = su.vty_5_24;
         ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
       };
     });
@@ -67,14 +63,14 @@ in
     zdbsp          = normalPackage  "zdbsp";
     strife         = normalPackage  "strife-ve";
     asar           = normalPackage  "asar";
-    oos-randomizer = normalPackageO "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
+    oosRandomizer = normalPackageO "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
 
     # Development versions of packages
-    odamexMaster        = devPackage "odamex";
-    eternityMaster      = devPackage "eternity-engine";
-    chocolateDoomMaster = devPackage "chocolate-doom";
-    nestopiaMaster      = devPackage "nestopia";
-    mgbaMaster          = devPackageC libsForQt5 "mgba" {};
+    odamexMaster        = devPackage             "odamex";
+    eternityMaster      = devPackage             "eternity-engine";
+    chocolateDoomMaster = devPackage             "chocolate-doom";
+    nestopiaMaster      = devPackage             "nestopia";
+    mgbaMaster          = devPackageC libsForQt5 "mgba"           {};
 
     wineStaging = self.winePackages.full.override {
       wineRelease = "staging";
