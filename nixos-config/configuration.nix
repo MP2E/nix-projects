@@ -53,14 +53,13 @@
               # needed for xmonad master to configure
               xmonad         = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
-              xmonad-extras  = se.callPackage ../haskell-projects/xmonad-extras {};
 
               ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
             };
           });
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc843;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
-        xmonad xmonad-contrib xmonad-extras xmobar # needed for xmonad
+        xmonad xmonad-contrib xmobar # needed for xmonad
 #       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
         pretty-show hscolour # .ghci pretty printing support
       ]);
@@ -134,7 +133,7 @@
 
   services.xserver.windowManager.xmonad.haskellPackages = pkgs.myHaskellPackages;
   services.xserver.windowManager.xmonad.enable = true;
-  services.xserver.windowManager.xmonad.enableContribAndExtras = true;
+# services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.default = "xmonad";
   services.xserver.desktopManager.default = "none";
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -158,8 +157,8 @@
   hardware.bluetooth.enable = true;
 # hardware.datapathVision.enable = true;
 
-  system.stateVersion = "18.09";
-  services.nixosManual.enable = false;
+  system.stateVersion = "19.03";
+  documentation.nixos.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {

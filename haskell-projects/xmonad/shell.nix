@@ -6,28 +6,25 @@ let
 
   f = { mkDerivation, lib, base, containers, data-default, directory
       , extensible-exceptions, filepath, mtl, process, QuickCheck
-      , semigroups, setlocale, stdenv, unix, utf8-string, X11
+      , setlocale, stdenv, unix, utf8-string, X11
       }:
       mkDerivation {
         pname = "xmonad";
-        version = "0.13";
+        version = "0.14.2";
         src = lib.cleanSource /home/cray/xmonad;
         isLibrary = true;
         isExecutable = true;
-        enableSeparateDataOutput = true;
         libraryHaskellDepends = [
           base containers data-default directory extensible-exceptions
-          filepath mtl process semigroups setlocale unix utf8-string X11
+          filepath mtl process setlocale unix utf8-string X11
         ];
         executableHaskellDepends = [ base mtl unix X11 ];
         testHaskellDepends = [
           base containers extensible-exceptions QuickCheck X11
         ];
         postInstall = ''
-          shopt -s globstar
-          mkdir -p $doc/share/man/man1
-          mv "$data/"**"/man/"*[0-9] $doc/share/man/man1/
-          rm "$data/"**"/man/"*
+          install -D man/xmonad.1 $doc/share/man/man1/xmonad.1
+          install -D man/xmonad.hs $doc/share/doc/$name/sample-xmonad.hs
         '';
         homepage = "http://xmonad.org";
         description = "A tiling window manager";
