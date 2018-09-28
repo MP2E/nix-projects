@@ -21,6 +21,7 @@ let
   # Custom dev package function
   devPackage = p: callPackage (normalProjectDir + p + "/master.nix") {};
   devPackageC = s: p: v: s.callPackage (normalProjectDir + p + "/master.nix") v;
+  devPackageO = p: v: callPackage (normalProjectDir + p + "/master.nix") v;
 
 in
 { allowUnfree = true;
@@ -32,6 +33,9 @@ in
         # needed for xmonad master
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
+        semigroupoids    = haskellPackage se "semigroupoids";
+        polyparse        = haskellPackage se "polyparse";
+        microlens-th     = haskellPackage se "microlens-th";
 
         vty              = su.vty_5_24;
         ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
@@ -39,7 +43,7 @@ in
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc843;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc861;
 
     haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
       attoparsec parsec aeson mtl transformers lens lens-aeson
@@ -71,6 +75,7 @@ in
     chocolateDoomMaster = devPackage             "chocolate-doom";
     nestopiaMaster      = devPackage             "nestopia";
     mgbaMaster          = devPackageC libsForQt5 "mgba"           {};
+    oosRandomizerDev    = devPackageO "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
 
     wineStaging = self.winePackages.full.override {
       wineRelease = "staging";
