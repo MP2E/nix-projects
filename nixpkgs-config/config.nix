@@ -45,15 +45,9 @@ in
     # Derive package sets for the versions of GHC I'm interested in.
     myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc861;
 
-    haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
-      attoparsec parsec aeson mtl transformers lens lens-aeson
-      text random vector stm comonad free total network HTTP
-      QuickCheck deepseq deepseq-generics hspec optparse-applicative
-      bytestring pipes turtle foldl cereal OpenGL GLUT
-      hlint cabal-install hoogle yesod yesod-bin djinn alex happy
-      intero stack
-      xmonad xmonad-contrib xmobar
-    ]);
+#   haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
+#     xmonad xmonad-contrib xmobar
+#   ]);
 
     jsEnv = haskell.packages.ghcjs.ghcWithPackages (p: with p; [
       reflex reflex-dom ghcjs-dom
@@ -67,7 +61,7 @@ in
     zdbsp          = normalPackage  "zdbsp";
     strife         = normalPackage  "strife-ve";
     asar           = normalPackage  "asar";
-    oosRandomizer = normalPackageO "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
+    oosRandomizer  = normalPackageO "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
 
     # Development versions of packages
     odamexMaster        = devPackage             "odamex";
@@ -75,7 +69,7 @@ in
     chocolateDoomMaster = devPackage             "chocolate-doom";
     nestopiaMaster      = devPackage             "nestopia";
     mgbaMaster          = devPackageC libsForQt5 "mgba"           {};
-    oosRandomizerDev    = devPackageO "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
+    oosRandomizerDev    = devPackageO            "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
 
     wineStaging = self.winePackages.full.override {
       wineRelease = "staging";
