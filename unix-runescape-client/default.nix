@@ -1,4 +1,4 @@
-{ stdenv, lib, makeWrapper, fetchFromGitHub, jre, wget, xdg_utils, pulseaudio, p7zip, perl, ListMoreUtils, ConfigIniFiles, ArchiveExtract, Wx }:
+{ stdenv, lib, makeWrapper, fetchFromGitHub, jre, wget, xdg_utils, pulseaudio, p7zip, perl, ListMoreUtils, ConfigIniFiles, ArchiveExtract, LWP, Wx }:
 
 stdenv.mkDerivation rec {
   name = "unix-runescape-client-${version}";
@@ -13,7 +13,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = [ perl ListMoreUtils ConfigIniFiles ArchiveExtract Wx ];
+  buildInputs = [ perl ListMoreUtils ConfigIniFiles ArchiveExtract LWP Wx ];
 
   runtimeDependencies = [ wget xdg_utils p7zip jre pulseaudio ];
 
