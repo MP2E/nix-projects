@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   name = "unix-runescape-client-${version}";
-  version = "4.3.5";
+  version = "4.3.5-git";
 
   src = fetchFromGitHub {
     owner = "rsu-client";
@@ -10,6 +10,8 @@ stdenv.mkDerivation rec {
     rev = "a298a37eb54b3554d56a6bec52dbe02628e1af91";
     sha256 = "0nj8bvr14srpsvzm874j2nflx9an21xb3q2kzcbas9ap76b9yyb1";
   };
+
+  patches = [ ./fix-paths.patch ];
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -38,10 +40,8 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  patches = [ ./fix-paths.patch ];
-
   meta = with stdenv.lib; {
-    description = "A Unix old-school RuneScape client";
+    description = "An Old-School RuneScape client for *nix-like operating systems";
     homepage = https://github.com/rsu-client/rsu-client;
     maintainers = [ maintainers.MP2E ];
     platforms = platforms.all;
