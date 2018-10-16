@@ -58,7 +58,7 @@ in
     strife            = normalPackage  "strife-ve";
     asar              = normalPackage  "asar";
     oosRandomizer     = normalPackageO "oos-randomizer"        { buildGoPackage = pkgs.buildGo110Package; };
-    osRuneScapeClient = normalPackageO "unix-runescape-client" { inherit (perlPackages) ListMoreUtils ConfigIniFiles ArchiveExtract Wx; };
+    osRuneScapeClient = normalPackageO "unix-runescape-client" { inherit (perlPackages) ListMoreUtils ConfigIniFiles ArchiveExtract LWP Wx; };
 
     # Development versions of packages
     odamexMaster        = devPackage             "odamex";
