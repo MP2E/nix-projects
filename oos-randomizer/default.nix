@@ -3,13 +3,13 @@
 buildGoPackage rec {
   name = "oos-randomizer-${version}";
 
-  version = "2.1.2";
+  version = "2.2.0";
 
   src = fetchFromGitHub {
     owner = "jangler";
     repo = "oos-randomizer";
     rev = "${version}";
-    sha256 = "0r1p8zvr3776q73pdkkznpjads77x66c6adrslz8fd37iz3ipvah";
+    sha256 = "0dfxavclismyx4p2xxfb5i98b3iavbj7xdhvmjfl6wp87xyzv75g";
   };
 
   goPackagePath = "github.com/jangler/oos-randomizer";

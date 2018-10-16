@@ -1,0 +1,39 @@
+diff --git a/runescape/rsu/framework/API/client/launch/launcher.pm b/runescape/rsu/framework/API/client/launch/launcher.pm
+index 25e2a24..d5f2daf 100755
+--- a/runescape/rsu/framework/API/client/launch/launcher.pm
++++ b/runescape/rsu/framework/API/client/launch/launcher.pm
+@@ -74,7 +74,7 @@ use client::env;
+ my $HOME = client::env::home();
+ 
+ # If this script have been installed systemwide
+-if ($cwd =~ /^(\/usr\/s?bin|\/opt\/|\/usr\/local\/s?bin)/)
++if (1)
+ {
+ 	# Print debug info
+ 	print "The script is running from a system path!\n".$HOME."/.config/runescape will be used as client folder instead!\n\n";
+diff --git a/runescape/rsu/framework/API/client/launch/runescape.pm b/runescape/rsu/framework/API/client/launch/runescape.pm
+index fa3be62..929e811 100644
+--- a/runescape/rsu/framework/API/client/launch/runescape.pm
++++ b/runescape/rsu/framework/API/client/launch/runescape.pm
+@@ -110,7 +110,7 @@ elsif ($rsu_data->args =~ /--help/)
+ }
+ 
+ # If this script have been installed systemwide
+-if ($rsu_data->cwd =~ /^(\/usr\/s?bin|\/opt\/|\/usr\/local\/s?bin)/)
++if (1)
+ {
+ 	# Print debug info
+ 	print "The script is running from a system path!\n".$rsu_data->HOME."/.config/runescape will be used as client folder instead!\n\n";
+diff --git a/runescape/rsu/framework/modules/rsu/files/clientdir.pm b/runescape/rsu/framework/modules/rsu/files/clientdir.pm
+index 98c14e4..0e26c8d 100644
+--- a/runescape/rsu/framework/modules/rsu/files/clientdir.pm
++++ b/runescape/rsu/framework/modules/rsu/files/clientdir.pm
+@@ -29,7 +29,7 @@ sub getclientdir
+ 	my $clientdir = $cwd;
+ 	
+ 	# If this script have been installed systemwide
+-	if ($scriptdir =~ /^(\/usr\/s?bin|\/opt\/|\/usr\/local\/s?bin)/)
++	if (1)
+ 	{
+ 		# Change $clientdir to ~/.config/runescape
+ 		$clientdir = "$HOME/.config/runescape";
