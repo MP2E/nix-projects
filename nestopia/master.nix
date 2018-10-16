@@ -1,27 +1,24 @@
-{ stdenv, lib, cmake, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, glew, makeWrapper
-, mesa, libarchive, libao, unzip, xdg_utils, gsettings_desktop_schemas, epoxy }:
+{ stdenv, lib, autoreconfHook, autoconf-archive, pkgconfig, SDL2, alsaLib, gtk3, mesa_glu, glew, makeWrapper
+, mesa, libao, libarchive, unzip, xdg_utils, gsettings_desktop_schemas, epoxy }:
 
 stdenv.mkDerivation rec {
-  name = "nestopia-20171025";
+  name = "nestopia-20181009";
   src = lib.cleanSource /home/cray/nestopia-src;
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [ pkgconfig cmake makeWrapper ];
-  buildInputs = [ SDL2 alsaLib gtk3 mesa_glu glew mesa
-                  libarchive libao unzip xdg_utils gsettings_desktop_schemas epoxy ];
-
-  installPhase = ''
-    mkdir -p $out/{bin,share/nestopia}
-    make install PREFIX=$out
-  '';
+  nativeBuildInputs = [ autoreconfHook autoconf-archive pkgconfig makeWrapper ];
+  buildInputs = [ SDL2 alsaLib gtk3 mesa_glu glew mesa libao
+                  libarchive unzip xdg_utils gsettings_desktop_schemas epoxy ];
 
   preFixup = ''
-     for f in $out/bin/*; do
-       wrapProgram $f \
-         --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH:$out/share"
-     done
+    for f in $out/bin/*; do
+      wrapProgram $f \
+        --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH:$out/share"
+    done
   '';
+
+  configureFlags = [ "--enable-gui" ];
 
   meta = {
     homepage = http://0ldsk00l.ca/nestopia/;

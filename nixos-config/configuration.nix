@@ -50,14 +50,9 @@
               # needed for xmonad master to configure
               xmonad         = se.callPackage ../haskell-projects/xmonad {};
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
-              semigroupoids  = se.callPackage ../haskell-projects/semigroupoids {};
-              polyparse      = se.callPackage ../haskell-projects/polyparse {};
-              microlens-th   = se.callPackage ../haskell-projects/microlens-th {};
-
-              ghc-exactprint = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc861;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc844;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmobar # needed for xmonad
 #       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
@@ -178,6 +173,8 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   hardware.bluetooth.enable = true;
+
+# services.mpd.enable = true;
 
   system.stateVersion = "19.03";
   documentation.nixos.enable = false;

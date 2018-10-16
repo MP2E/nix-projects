@@ -3,7 +3,7 @@
 buildGoPackage rec {
   name = "oos-randomizer-${version}";
 
-  version = "2.1.1-dev";
+  version = "2.2.0-dev";
 
   src = lib.cleanSource /home/cray/oos-rando-git;
 

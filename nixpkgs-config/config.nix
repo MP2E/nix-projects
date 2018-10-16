@@ -33,17 +33,13 @@ in
         # needed for xmonad master
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
-        semigroupoids    = haskellPackage se "semigroupoids";
-        polyparse        = haskellPackage se "polyparse";
-        microlens-th     = haskellPackage se "microlens-th";
 
         vty              = su.vty_5_24;
-        ghc-exactprint   = pkgs.haskell.lib.dontCheck su.ghc-exactprint;
       };
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc861;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc844;
 
 #   haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
 #     xmonad xmonad-contrib xmobar
@@ -54,14 +50,15 @@ in
     ]);
 
     # Packages that aren't Haskell packages.
-    sixpair        = normalPackage  "sixpair";
-    doom64ex       = normalPackage  "doom64ex";
-    wadgen         = normalPackage  "wadgen";
-    slade          = normalPackageO "slade"          { wxGTK30 = pkgs.wxGTK30.override { withWebKit = true; }; };
-    zdbsp          = normalPackage  "zdbsp";
-    strife         = normalPackage  "strife-ve";
-    asar           = normalPackage  "asar";
-    oosRandomizer  = normalPackageO "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
+    sixpair           = normalPackage  "sixpair";
+    doom64ex          = normalPackage  "doom64ex";
+    wadgen            = normalPackage  "wadgen";
+    slade             = normalPackageO "slade"                 { wxGTK30 = pkgs.wxGTK30.override { withWebKit = true; }; };
+    zdbsp             = normalPackage  "zdbsp";
+    strife            = normalPackage  "strife-ve";
+    asar              = normalPackage  "asar";
+    oosRandomizer     = normalPackageO "oos-randomizer"        { buildGoPackage = pkgs.buildGo110Package; };
+    osRuneScapeClient = normalPackageO "unix-runescape-client" { inherit (perlPackages) ListMoreUtils ConfigIniFiles ArchiveExtract Wx; };
 
     # Development versions of packages
     odamexMaster        = devPackage             "odamex";
