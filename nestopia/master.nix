@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  configureFlags = [ "--enable-gui" ];
+  configureFlags = [ "--enable-gui" "--with-ao" ];
 
   meta = {
     homepage = http://0ldsk00l.ca/nestopia/;
