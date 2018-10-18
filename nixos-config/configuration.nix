@@ -32,7 +32,7 @@
 
   networking.hostName = "comonad"; # Define your hostname.
   networking.networkmanager.enable = true;
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   # Select internationalisation properties.
   i18n = {
@@ -155,35 +155,15 @@
   nixpkgs.config.allowUnfree = true;
 
   services.mysql.enable = true;
-  services.mysql.package = pkgs.mysql;
+  services.mysql.package = pkgs.mysql80;
   services.mysql.dataDir = "/var/lib/mysql";
   services.mysql.extraOptions = ''
     lower_case_table_names = 1
-  '';
-
-  services.nginx.enable = true;
-  services.nginx.virtualHosts."localhost" = {
-    root = "/var/www/phpmyadmin";
-    default = true;
-    locations."/".index = "index.php index.html index.htm";
-    locations."~ \.php$".extraConfig = ''
-      fastcgi_pass  127.0.0.1:9000;
-      fastcgi_index index.php;
-    '';
-  };
-
-  services.phpfpm.poolConfigs.mypool = ''
-    listen = 127.0.0.1:9000
-    user = nobody
-    pm = dynamic
-    pm.max_children = 5
-    pm.start_servers = 2
-    pm.min_spare_servers = 1
-    pm.max_spare_servers = 3
-    pm.max_requests = 500
+    default-time-zone='America/Los_Angeles'
   '';
 
 # virtualisation.virtualbox.host.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   nix.useSandbox = true;
 
@@ -197,13 +177,13 @@
   hardware.pulseaudio.support32Bit = true;
   hardware.bluetooth.enable = true;
 
-  system.nixos.stateVersion = "18.09";
+  system.stateVersion = "18.09";
   services.nixosManual.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {
     name = "cray";
-    extraGroups = [ "wheel" "audio" "networkmanager" "vboxusers" ];
+    extraGroups = [ "wheel" "audio" "networkmanager" "vboxusers" "libvirtd" ];
     createHome = true;
     home = "/home/cray";
     shell = "/var/run/current-system/sw/bin/zsh";
