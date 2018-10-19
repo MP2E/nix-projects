@@ -4,7 +4,7 @@
 }:
 mkDerivation {
   pname = "xmonad";
-  version = "0.14.2";
+  version = "0.15";
   src = lib.cleanSource /home/cray/xmonad;
   isLibrary = true;
   isExecutable = true;
@@ -17,8 +17,10 @@ mkDerivation {
     base containers extensible-exceptions QuickCheck X11
   ];
   postInstall = ''
-    install -D man/xmonad.1 $doc/share/man/man1/xmonad.1
-    install -D man/xmonad.hs $doc/share/doc/$name/sample-xmonad.hs
+    shopt -s globstar
+    mkdir -p $doc/share/man/man1
+    mv "$data/"**"/man/"*[0-9] $doc/share/man/man1/
+    rm "$data/"**"/man/"*
   '';
   homepage = "http://xmonad.org";
   description = "A tiling window manager";
