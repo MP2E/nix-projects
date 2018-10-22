@@ -37,7 +37,7 @@ in
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
 
-        vty              = su.vty_5_24;
+        vty              = su.vty_5_24_1;
       };
     });
 

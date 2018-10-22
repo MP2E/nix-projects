@@ -86,6 +86,7 @@
     vimHugeX
     xclip
     bluez5
+    dunst
 
     ghcEnv
   ];
