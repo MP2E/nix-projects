@@ -85,6 +85,7 @@
     bluez5
     ntfs3g
     exfat
+    dunst
 
     ghcEnv
   ];
