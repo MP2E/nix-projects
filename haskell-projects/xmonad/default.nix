@@ -17,10 +17,8 @@ mkDerivation {
     base containers extensible-exceptions QuickCheck X11
   ];
   postInstall = ''
-    shopt -s globstar
-    mkdir -p $doc/share/man/man1
-    mv "$data/"**"/man/"*[0-9] $doc/share/man/man1/
-    rm "$data/"**"/man/"*
+    install -D man/xmonad.1 $doc/share/man/man1/xmonad.1
+    install -D man/xmonad.hs $doc/share/doc/$name/sample-xmonad.hs
   '';
   homepage = "http://xmonad.org";
   description = "A tiling window manager";
