@@ -1,10 +1,10 @@
-{ mkDerivation, lib, base, containers, data-default, directory
+{ lib, mkDerivation, base, containers, data-default, directory
 , extensible-exceptions, filepath, mtl, process, QuickCheck
 , setlocale, stdenv, unix, utf8-string, X11
 }:
 mkDerivation {
   pname = "xmonad";
-  version = "0.14.2";
+  version = "0.15";
   src = lib.cleanSource /home/cray/xmonad;
   isLibrary = true;
   isExecutable = true;
