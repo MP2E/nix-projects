@@ -34,12 +34,14 @@ in
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
 
-        vty              = su.vty_5_24_1;
+        vty              = su.vty_5_25_1;
+        irc-core         = pkgs.haskell.lib.doJailbreak su.irc-core;
+        hookup           = pkgs.haskell.lib.doJailbreak su.hookup;
       };
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc844;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc862;
 
 #   haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
 #     xmonad xmonad-contrib xmobar

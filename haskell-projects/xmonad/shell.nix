@@ -4,7 +4,7 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, lib, base, containers, data-default, directory
+  f = { lib, mkDerivation, base, containers, data-default, directory
       , extensible-exceptions, filepath, mtl, process, QuickCheck
       , setlocale, stdenv, unix, utf8-string, X11
       }:

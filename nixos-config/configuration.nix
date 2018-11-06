@@ -52,7 +52,7 @@
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc844;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc862;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmobar # needed for xmonad
 #       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer

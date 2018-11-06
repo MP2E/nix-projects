@@ -1,4 +1,4 @@
-{ mkDerivation, lib, base, containers, data-default, directory
+{ lib, mkDerivation, base, containers, data-default, directory
 , extensible-exceptions, filepath, mtl, process, QuickCheck
 , setlocale, stdenv, unix, utf8-string, X11
 }:

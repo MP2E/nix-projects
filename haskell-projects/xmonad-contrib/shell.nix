@@ -4,7 +4,7 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, lib, base, bytestring, containers, directory
+  f = { lib, mkDerivation, base, bytestring, containers, directory
       , extensible-exceptions, filepath, mtl, old-locale, old-time
       , process, random, semigroups, stdenv, unix, utf8-string, X11
       , X11-xft, xmonad
