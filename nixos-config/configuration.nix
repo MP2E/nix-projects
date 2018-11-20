@@ -65,6 +65,8 @@
       linux = pkgs.linuxPackages_4_14.kernel;
       linuxPackages = pkgs.linuxPackages_4_14;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
+      jdk = pkgs.oraclejdk8;
+      jre = pkgs.oraclejre8;
     };
   };
 

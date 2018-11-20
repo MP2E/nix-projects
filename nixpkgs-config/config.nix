@@ -62,16 +62,16 @@ in
     zdbsp             = normalPackage  "zdbsp";
     strife            = normalPackage  "strife-ve";
     asar              = normalPackage  "asar";
-    oosRandomizer     = normalPackageO "oos-randomizer"        { buildGoPackage = pkgs.buildGo110Package; };
+    oraclesRandomizer = normalPackageO "oracles-randomizer"    { buildGoPackage = pkgs.buildGo110Package; };
     osRuneScapeClient = normalPackageO "unix-runescape-client" { inherit (perlPackages) ListMoreUtils ConfigIniFiles ArchiveExtract LWP Wx; };
 
     # Development versions of packages
-    odamexMaster        = devPackage             "odamex";
-    eternityMaster      = devPackage             "eternity-engine";
-    chocolateDoomMaster = devPackage             "chocolate-doom";
-    nestopiaMaster      = devPackage             "nestopia";
-    mgbaMaster          = devPackageC libsForQt5 "mgba"           {};
-    oosRandomizerDev    = devPackageO            "oos-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
+    odamexMaster            = devPackage             "odamex";
+    eternityMaster          = devPackage             "eternity-engine";
+    chocolateDoomMaster     = devPackage             "chocolate-doom";
+    nestopiaMaster          = devPackage             "nestopia";
+    mgbaMaster              = devPackageC libsForQt5 "mgba"               {};
+    oraclesRandomizerDev    = devPackageO            "oracles-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
 
     wineStaging = self.winePackages.full.override {
       wineRelease = "staging";
@@ -110,5 +110,7 @@ in
     SDL2_mixer  = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
     obs-studio  = self.obs-studio.override  { pulseaudioSupport = true; };
     reposurgeon = self.reposurgeon.override { subversion = pkgs.subversion; };
+    jdk         = pkgs.oraclejdk8;
+    jre         = pkgs.oraclejre8;
   };
 }
