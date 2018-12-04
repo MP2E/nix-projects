@@ -99,8 +99,6 @@ in
                                               libvorbis        = pkgs.libvorbis;
                                               libpulseaudio    = pkgs.libpulseaudio;
                                               lzma             = pkgs.xz;
-                                              nvenc            = true;
-                                              nvidia-video-sdk = pkgs.nvidia-video-sdk;
                                               x264             = pkgs.x264;
                                               x265             = pkgs.x265;
                                               zlib             = pkgs.zlib;
