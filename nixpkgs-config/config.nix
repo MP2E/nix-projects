@@ -44,7 +44,7 @@ in
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc862;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc863;
 
 #   haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
 #     xmonad xmonad-contrib xmobar

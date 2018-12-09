@@ -3,11 +3,11 @@
 buildGoPackage rec {
   name = "oracles-randomizer-${version}";
 
-  version = "3.0.0-dev";
+  version = "3.1.0-dev";
 
   src = lib.cleanSource /home/cray/oracles-rando-git;
 
-  goPackagePath = "github.com/jangler/oos-randomizer";
+  goPackagePath = "github.com/jangler/oracles-randomizer";
   goDeps = ./deps.nix;
 
   meta = with stdenv.lib; {
