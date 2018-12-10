@@ -147,7 +147,7 @@
   hardware.opengl.driSupport32Bit = true;
   nixpkgs.config.allowUnfree = true;
 
-  # virtualisation.virtualbox.host.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   nix.useSandbox = true;
 
@@ -171,7 +171,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {
     name = "cray";
-    extraGroups = [ "wheel" "audio" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "networkmanager" "libvirtd" ];
     createHome = true;
     home = "/home/cray";
     shell = "/var/run/current-system/sw/bin/zsh";
