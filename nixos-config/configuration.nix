@@ -33,6 +33,8 @@
     }
     '';
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   networking.hostName = "applicative"; # Define your hostname.
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;

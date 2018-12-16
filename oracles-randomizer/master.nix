@@ -3,7 +3,7 @@
 buildGoPackage rec {
   name = "oracles-randomizer-${version}";
 
-  version = "3.1.0-dev";
+  version = "3.1.3-dev";
 
   src = lib.cleanSource /home/cray/oracles-rando-git;
 
