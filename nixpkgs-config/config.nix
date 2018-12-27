@@ -37,7 +37,6 @@ in
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
 
-        vty              = su.vty_5_25_1;
         irc-core         = pkgs.haskell.lib.doJailbreak su.irc-core;
         hookup           = pkgs.haskell.lib.doJailbreak su.hookup;
       };

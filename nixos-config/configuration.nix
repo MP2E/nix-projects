@@ -150,6 +150,7 @@
   nixpkgs.config.allowUnfree = true;
 
   virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
   nix.useSandbox = true;
 
