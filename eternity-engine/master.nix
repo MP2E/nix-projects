@@ -1,12 +1,12 @@
-{ stdenv, lib, cmake, mesa_noglu, SDL2, SDL2_mixer, SDL2_net, makeWrapper }:
+{ stdenv, lib, zlib, cmake, mesa_noglu, SDL2, SDL2_mixer, SDL2_net, makeWrapper }:
 
 stdenv.mkDerivation rec {
   name = "eternity-engine-${version}";
-  version = "20171110";
+  version = "20190103";
   src = lib.cleanSource ~/eternitygit;
 
   nativeBuildInputs = [ cmake makeWrapper ];
-  buildInputs = [ mesa_noglu SDL2 SDL2_mixer SDL2_net ];
+  buildInputs = [ zlib mesa_noglu SDL2 SDL2_mixer SDL2_net ];
 
   enableParallelBuilding = true;
 
