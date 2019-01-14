@@ -18,7 +18,20 @@
     };
 
   services.udev.extraRules = ''
+    # gamecube wii u usb adapter
     ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" TAG+="uaccess"
+
+    # This rule is needed for basic functionality of the controller in Steam and keyboard/mouse emulation
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", MODE="0666"
+
+    # This rule is necessary for gamepad emulation; make sure you replace 'pgriffais' with a group that the user that runs Steam belongs to
+    KERNEL=="uinput", MODE="0660", GROUP="steam", OPTIONS+="static_node=uinput"
+
+    # Nintendo Switch Pro Controller over USB hidraw
+    KERNEL=="hidraw*", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2009", MODE="0666"
+
+    # Nintendo Switch Pro Controller over bluetooth hidraw
+    KERNEL=="hidraw*", KERNELS=="*057E:2009*", MODE="0666"
   '';
 
   # Use the GRUB 2 boot loader.
@@ -37,7 +50,17 @@
 
   networking.hostName = "applicative"; # Define your hostname.
   networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
+
+  # Set limits for esync.
+  systemd.extraConfig = "DefaultLimitNOFILE=1048576";
+
+  security.pam.loginLimits = [{
+      domain = "*";
+      type = "hard";
+      item = "nofile";
+      value = "1048576";
+  }];
 
   # Select internationalisation properties.
   i18n = {
@@ -63,7 +86,6 @@
 #       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
         pretty-show hscolour # .ghci pretty printing support
       ]);
-      bluez = pkgs.bluez5.override { enableWiimote = true; };
       linux = pkgs.linuxPackages_latest.kernel;
       linuxPackages = pkgs.linuxPackages_latest;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
@@ -89,7 +111,7 @@
     dmenu
     vimHugeX
     xclip
-    bluez5
+    bluezFull
     exfat
     dunst
 
@@ -141,7 +163,6 @@
   services.xserver.windowManager.default = "xmonad";
   services.xserver.desktopManager.default = "none";
   services.xserver.videoDrivers = [ "amdgpu" ];
-  boot.kernelParams = [ "amdgpu.dc=1" ];
   services.compton.enable  = true;
   services.compton.backend = "glx";
   hardware.opengl.enable = true;
@@ -163,6 +184,10 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.configFile = ./default.pa;
   hardware.pulseaudio.support32Bit = true;
+  hardware.pulseaudio.daemon.config = {
+    default-fragments = 3;
+    default-fragment-size-msec = 4;
+  };
   hardware.bluetooth.enable = true;
 # hardware.mwProCapture.enable = true;
 
@@ -174,7 +199,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {
     name = "cray";
-    extraGroups = [ "wheel" "audio" "networkmanager" "libvirtd" ];
+    extraGroups = [ "wheel" "audio" "networkmanager" "libvirtd" "steam" ];
     createHome = true;
     home = "/home/cray";
     shell = "/var/run/current-system/sw/bin/zsh";

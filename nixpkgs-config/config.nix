@@ -82,7 +82,7 @@ in
     };
 
     # Package overrides
-    ffmpeg      = self.ffmpeg-full.override {
+    ffmpeg     = self.ffmpeg-full.override {
 #                                             enableLto        = true;
                                               nonfreeLicensing = true;
                                               alsaLib          = pkgs.alsaLib;
@@ -103,11 +103,12 @@ in
                                               zlib             = pkgs.zlib;
                                               SDL2             = pkgs.SDL2;
                                            };
-    SDL_mixer   = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
-    SDL2_mixer  = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
-    obs-studio  = self.obs-studio.override  { pulseaudioSupport = true; };
-    reposurgeon = self.reposurgeon.override { subversion = pkgs.subversion; };
-    jdk         = pkgs.oraclejdk8;
-    jre         = pkgs.oraclejre8;
+    SDL_mixer        = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
+    SDL2_mixer       = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
+    obs-studio       = self.obs-studio.override  { pulseaudioSupport = true; };
+    reposurgeon      = self.reposurgeon.override { subversion = pkgs.subversion; };
+    dolphinEmuMaster = self.dolphinEmuMaster.override { bluez = pkgs.bluezFull; };
+    jdk              = pkgs.oraclejdk8;
+    jre              = pkgs.oraclejre8;
   };
 }
