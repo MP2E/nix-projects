@@ -189,7 +189,7 @@
     default-fragment-size-msec = 4;
   };
   hardware.bluetooth.enable = true;
-# hardware.mwProCapture.enable = true;
+  hardware.mwProCapture.enable = true;
 
 # services.mpd.enable = true;
 
