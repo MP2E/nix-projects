@@ -71,7 +71,7 @@ in
     chocolateDoomMaster     = devPackage             "chocolate-doom";
     nestopiaMaster          = devPackage             "nestopia";
     mgbaMaster              = devPackageC libsForQt5 "mgba"               {};
-    oraclesRandomizerDev    = devPackageO            "oracles-randomizer" { buildGoPackage = pkgs.buildGo110Package; };
+    oraclesRandomizerDev    = devPackageO            "oracles-randomizer" { buildGoPackage = pkgs.buildGo111Package; };
 
     wineStaging = self.winePackages.full.override {
       wineRelease = "staging";
