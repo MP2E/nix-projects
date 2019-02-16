@@ -37,6 +37,7 @@ in
         # needed for xmonad master
         xmonad           = haskellPackage se "xmonad";
         xmonad-contrib   = haskellPackage se "xmonad-contrib";
+        discord-haskell  = haskellPackage se "discord-haskell";
 
         irc-core         = pkgs.haskell.lib.doJailbreak su.irc-core;
         hookup           = pkgs.haskell.lib.doJailbreak su.hookup;

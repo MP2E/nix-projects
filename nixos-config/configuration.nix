@@ -25,7 +25,7 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", MODE="0666"
 
     # This rule is necessary for gamepad emulation; make sure you replace 'pgriffais' with a group that the user that runs Steam belongs to
-    KERNEL=="uinput", MODE="0660", GROUP="steam", OPTIONS+="static_node=uinput"
+    KERNEL=="uinput", MODE="0660", GROUP="wheel", OPTIONS+="static_node=uinput"
 
     # Nintendo Switch Pro Controller over USB hidraw
     KERNEL=="hidraw*", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2009", MODE="0666"
@@ -46,7 +46,11 @@
     }
     '';
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPatches = [ {
+    name = "linux-5.0-fix";
+    patch = ./linux-5.0-fix.patch;
+  } ];
 
   networking.hostName = "applicative"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -83,11 +87,11 @@
       myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc863;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmobar # needed for xmonad
-#       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
+        apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
         pretty-show hscolour # .ghci pretty printing support
       ]);
-      linux = pkgs.linuxPackages_latest.kernel;
-      linuxPackages = pkgs.linuxPackages_latest;
+      linux = pkgs.linuxPackages_testing.kernel;
+      linuxPackages = pkgs.linuxPackages_testing;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
       jdk = pkgs.oraclejdk8;
       jre = pkgs.oraclejre8;
@@ -189,7 +193,7 @@
     default-fragment-size-msec = 4;
   };
   hardware.bluetooth.enable = true;
-  hardware.mwProCapture.enable = true;
+# hardware.mwProCapture.enable = true;
 
 # services.mpd.enable = true;
 
@@ -199,7 +203,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.cray = {
     name = "cray";
-    extraGroups = [ "wheel" "audio" "networkmanager" "libvirtd" "steam" ];
+    extraGroups = [ "wheel" "audio" "networkmanager" "libvirtd" ];
     createHome = true;
     home = "/home/cray";
     shell = "/var/run/current-system/sw/bin/zsh";
