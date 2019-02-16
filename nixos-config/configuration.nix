@@ -78,7 +78,6 @@
     htop
     rxvt_unicode
     firefox
-    google-chrome
     cups
     dmenu
     vimHugeX
