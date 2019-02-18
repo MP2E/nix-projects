@@ -109,5 +109,8 @@ in
     obs-studio       = self.obs-studio.override  { pulseaudioSupport = true; };
     reposurgeon      = self.reposurgeon.override { subversion = pkgs.subversion; };
     dolphinEmuMaster = self.dolphinEmuMaster.override { bluez = pkgs.bluezFull; };
+
+    jdk = self.oraclejdk8;
+    jre = self.oraclejre8;
   };
 }

@@ -47,10 +47,6 @@
     '';
 
   boot.kernelPackages = pkgs.linuxPackages_testing;
-  boot.kernelPatches = [ {
-    name = "linux-5.0-fix";
-    patch = ./linux-5.0-fix.patch;
-  } ];
 
   networking.hostName = "applicative"; # Define your hostname.
   networking.networkmanager.enable = true;
