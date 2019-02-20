@@ -157,8 +157,9 @@
   services.mysql.dataDir = "/var/lib/mysql";
   services.mysql.extraOptions = ''
     lower_case_table_names = 1
-    default-time-zone='America/Los_Angeles'
   '';
+#   default-time-zone='America/Los_Angeles'
+# '';
 
 # virtualisation.virtualbox.host.enable = true;
   virtualisation.libvirtd.enable = true;

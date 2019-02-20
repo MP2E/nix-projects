@@ -6,6 +6,7 @@
 mkDerivation {
   pname = "discord-haskell";
   version = "0.8.0";
+  jailbreak = true;
   src = lib.cleanSource /home/cray/discord-haskell;
   libraryHaskellDepends = [
     aeson async base base64-bytestring bytestring containers
