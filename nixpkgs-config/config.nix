@@ -36,7 +36,6 @@ in
 
         zmi-stats        = haskellPackage se "zmi-stats";
         discord-haskell  = haskellPackage se "discord-haskell";
-        too-fast-too-free = haskellPackage se "too-fast-too-free";
         irc-core         = pkgs.haskell.lib.doJailbreak su.irc-core;
         hookup           = pkgs.haskell.lib.doJailbreak su.hookup;
       };
