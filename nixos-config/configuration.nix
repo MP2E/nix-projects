@@ -52,7 +52,7 @@
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc863;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc864;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmobar # needed for xmonad
 #       apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
@@ -78,6 +78,7 @@
     htop
     rxvt_unicode
     firefox
+    google-chrome
     cups
     dmenu
     vimHugeX
@@ -157,9 +158,8 @@
   services.mysql.dataDir = "/var/lib/mysql";
   services.mysql.extraOptions = ''
     lower_case_table_names = 1
+    default-time-zone='America/Los_Angeles'
   '';
-#   default-time-zone='America/Los_Angeles'
-# '';
 
 # virtualisation.virtualbox.host.enable = true;
   virtualisation.libvirtd.enable = true;

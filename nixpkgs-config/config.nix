@@ -38,11 +38,13 @@ in
         discord-haskell  = haskellPackage se "discord-haskell";
         irc-core         = pkgs.haskell.lib.doJailbreak su.irc-core;
         hookup           = pkgs.haskell.lib.doJailbreak su.hookup;
+        Chart            = pkgs.haskell.lib.doJailbreak su.Chart;
+        Chart-cairo      = pkgs.haskell.lib.doJailbreak su.Chart-cairo;
       };
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc863;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc864;
     extension = sel: sup: { mkDerivation = drv: sup.mkDerivation (drv // { doHaddock = false; configureFlags = drv.configureFlags or [] ++ ["--enable-optimization=2"]; }); };
     hp = myHaskellPackages.extend(extension);
 

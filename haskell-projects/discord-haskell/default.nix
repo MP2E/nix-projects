@@ -5,7 +5,7 @@
 }:
 mkDerivation {
   pname = "discord-haskell";
-  version = "0.8.0";
+  version = "0.8.1";
   jailbreak = true;
   src = lib.cleanSource /home/cray/discord-haskell;
   libraryHaskellDepends = [
