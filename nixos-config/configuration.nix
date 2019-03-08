@@ -133,7 +133,11 @@
   ];
 
   # enable touchpad
-  services.xserver.synaptics.enable = true;
+  # services.xserver.synaptics.enable = true;
+  services.xserver.libinput.enable = true;
+  services.xserver.libinput.naturalScrolling = false;
+  services.xserver.libinput.middleEmulation = true;
+  services.xserver.libinput.tapping = true;
 
   # important for work!
   # services.teamviewer.enable = true;
