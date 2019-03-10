@@ -1,0 +1,21 @@
+diff --git a/strife-ve-src/src/opengl/dgl.h b/strife-ve-src/src/opengl/dgl.h
+index 03d3132..4205eae 100644
+--- a/strife-ve-src/src/opengl/dgl.h
++++ b/strife-ve-src/src/opengl/dgl.h
+@@ -4341,16 +4341,6 @@ static __inline void glUnlockArraysEXT_DEBUG (const char* file, int line)
+ //
+ extern boolean has_GL_EXT_multi_draw_arrays;
+ 
+-#ifndef __IPHONEOS__
+-typedef void (APIENTRYP PFNGLMULTIDRAWARRAYSEXTPROC) (GLenum mode, GLint* first, GLsizei* count, GLsizei primcount);
+-typedef void (APIENTRYP PFNGLMULTIDRAWELEMENTSEXTPROC) (GLenum mode, const GLsizei* count, GLenum type, const GLvoid** indices, GLsizei primcount);
+-#endif // __IPHONEOS__
+-
+-#ifndef __IPHONEOS__
+-extern PFNGLMULTIDRAWARRAYSEXTPROC _glMultiDrawArraysEXT;
+-extern PFNGLMULTIDRAWELEMENTSEXTPROC _glMultiDrawElementsEXT;
+-#endif // __IPHONEOS__
+-
+ #ifndef __IPHONEOS__
+ #define GL_EXT_multi_draw_arrays_Define() \
+ boolean has_GL_EXT_multi_draw_arrays = false; \

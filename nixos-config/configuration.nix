@@ -46,7 +46,7 @@
     }
     '';
 
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "applicative"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -80,14 +80,14 @@
               xmonad-contrib = se.callPackage ../haskell-projects/xmonad-contrib {};
             };
           });
-      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc863;
+      myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc864;
       ghcEnv = myHaskellPackages.ghcWithPackages (p: with p; [
         xmonad xmonad-contrib xmobar # needed for xmonad
         apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
         pretty-show hscolour # .ghci pretty printing support
       ]);
-      linux = pkgs.linuxPackages_testing.kernel;
-      linuxPackages = pkgs.linuxPackages_testing;
+      linux = pkgs.linuxPackages_latest.kernel;
+      linuxPackages = pkgs.linuxPackages_latest;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
       jdk = pkgs.oraclejdk8;
       jre = pkgs.oraclejre8;
@@ -140,8 +140,8 @@
   services.openssh.enable = false;
 
   # enable nix binary cache access via SSH
-  nix.sshServe.enable = false;
-  nix.sshServe.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+nty00k0yUsHIzPN86SvBrBYhQnRYVPLTIFkrX4s37d+ho6h/bVqgTfsmNxx1thbBST90j4Kybd37pPWTvUFQfNdl6fesplu2zwlNpB7Tjgu4gl96i+OTOQABgWKGT3ZZyTbA7Sx8OEvLPd37/ugwzIHXgK3lSTgnZcaICP1QnOADtaMAZ/O+f5Gi+hLijMOoYh//h1+TgxH85k24eryQ1KrfiHAyeFuuWuYwCMRM4XqKQ6zw3Q+EYf/hGcS5QjEYb2uyzQ4T8vZR7nyDA8bUH1m2ENNjAYOzG1JmQn6mqzVtHRMlvmU413mj9VqORpNMR6tE7Ifn/59xQQWbfJN7 MP2E@archlinux.us" ];
+# nix.sshServe.enable = false;
+# nix.sshServe.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+nty00k0yUsHIzPN86SvBrBYhQnRYVPLTIFkrX4s37d+ho6h/bVqgTfsmNxx1thbBST90j4Kybd37pPWTvUFQfNdl6fesplu2zwlNpB7Tjgu4gl96i+OTOQABgWKGT3ZZyTbA7Sx8OEvLPd37/ugwzIHXgK3lSTgnZcaICP1QnOADtaMAZ/O+f5Gi+hLijMOoYh//h1+TgxH85k24eryQ1KrfiHAyeFuuWuYwCMRM4XqKQ6zw3Q+EYf/hGcS5QjEYb2uyzQ4T8vZR7nyDA8bUH1m2ENNjAYOzG1JmQn6mqzVtHRMlvmU413mj9VqORpNMR6tE7Ifn/59xQQWbfJN7 MP2E@archlinux.us" ];
 # nix.sshServe.protocol = "ssh-ng";
 
   # Enable CUPS to print documents.

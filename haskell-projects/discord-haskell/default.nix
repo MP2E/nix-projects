@@ -5,9 +5,9 @@
 }:
 mkDerivation {
   pname = "discord-haskell";
-  version = "0.8.0";
-  jailbreak = true;
+  version = "0.8.1";
   src = lib.cleanSource /home/cray/discord-haskell;
+  jailbreak = true;
   libraryHaskellDepends = [
     aeson async base base64-bytestring bytestring containers
     data-default http-client iso8601-time JuicyPixels MonadRandom req

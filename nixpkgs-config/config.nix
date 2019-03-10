@@ -46,7 +46,7 @@ in
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc863;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc864;
 
 #   haskellEnv = myHaskellPackages.ghcWithPackages (p: with p; [
 #     xmonad xmonad-contrib xmobar
@@ -105,9 +105,9 @@ in
                                               zlib             = pkgs.zlib;
                                               SDL2             = pkgs.SDL2;
                                            };
-    SDL_mixer        = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
+    SDL_mixer        = self.SDL_mixer.override   { enableNativeMidi = true; fluidsynth_1 = pkgs.fluidsynth_1; };
     SDL2_mixer       = self.SDL2_mixer.override  { enableNativeMidi = true; fluidsynth = pkgs.fluidsynth; };
-    obs-studio       = self.obs-studio.override  { pulseaudioSupport = true; };
+    obs-studio       = self.obs-studio.override  { pulseaudioSupport = true; libva = pkgs.libva; };
     reposurgeon      = self.reposurgeon.override { subversion = pkgs.subversion; };
     dolphinEmuMaster = self.dolphinEmuMaster.override { bluez = pkgs.bluezFull; };
 

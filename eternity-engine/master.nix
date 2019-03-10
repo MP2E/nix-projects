@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   name = "eternity-engine-${version}";
-  version = "20190103";
+  version = "20190309";
   src = lib.cleanSource ~/eternitygit;
 
   nativeBuildInputs = [ cmake makeWrapper ];
