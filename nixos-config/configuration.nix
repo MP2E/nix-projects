@@ -46,7 +46,7 @@
     }
     '';
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_4_20;
 
   networking.hostName = "applicative"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -86,8 +86,8 @@
         apply-refact hlint stylish-haskell hasktags hoogle # spacemacs haskell layer
         pretty-show hscolour # .ghci pretty printing support
       ]);
-      linux = pkgs.linuxPackages_latest.kernel;
-      linuxPackages = pkgs.linuxPackages_latest;
+      linux = pkgs.linuxPackages_4_20.kernel;
+      linuxPackages = pkgs.linuxPackages_4_20;
       project_paintball = pkgs.callPackage ../fonts/project-paintball {};
       jdk = pkgs.oraclejdk8;
       jre = pkgs.oraclejre8;
@@ -136,8 +136,10 @@
 
   # List services that you want to enable:
 
+# services.teamviewer.enable = true;
+
   # Enable the OpenSSH daemon.
-  services.openssh.enable = false;
+  services.openssh.enable = true;
 
   # enable nix binary cache access via SSH
 # nix.sshServe.enable = false;
@@ -189,7 +191,7 @@
     default-fragment-size-msec = 4;
   };
   hardware.bluetooth.enable = true;
-# hardware.mwProCapture.enable = true;
+  hardware.mwProCapture.enable = true;
 
 # services.mpd.enable = true;
 

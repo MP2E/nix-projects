@@ -60,11 +60,11 @@ in
     sixpair           = normalPackage  "sixpair";
     doom64ex          = normalPackage  "doom64ex";
     wadgen            = normalPackage  "wadgen";
-    slade             = normalPackageO "slade"                 { wxGTK30 = pkgs.wxGTK30.override { withWebKit = true; }; };
+    slade             = normalPackageO "slade"                 { wxGTK30 = pkgs.wxGTK30.override { withWebKit = true; withGtk2 = false; }; };
     zdbsp             = normalPackage  "zdbsp";
     strife            = normalPackage  "strife-ve";
     asar              = normalPackage  "asar";
-    oraclesRandomizer = normalPackageO "oracles-randomizer"    { buildGoPackage = pkgs.buildGo110Package; };
+    oraclesRandomizer = normalPackageO "oracles-randomizer"    { buildGoPackage = pkgs.buildGo112Package; };
 
     # Development versions of packages
     odamexMaster            = devPackage             "odamex";

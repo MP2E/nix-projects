@@ -3,13 +3,13 @@
 buildGoPackage rec {
   name = "oracles-randomizer-${version}";
 
-  version = "3.3.7";
+  version = "3.4.0";
 
   src = fetchFromGitHub {
     owner = "jangler";
     repo = "oracles-randomizer";
     rev = "${version}";
-    sha256 = "1jdpyyfdwv0qbxkqrr2y6qq2iqyjvlhwmzih1nmjmcsrj1gb47pc";
+    sha256 = "sha256:0lkxk43sjyiw5ynlrjgxqsb6bifqz4cq91b463xi791kf5v64cih";
   };
 
   goPackagePath = "github.com/jangler/oracles-randomizer";

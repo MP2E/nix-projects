@@ -1,17 +1,22 @@
-{ stdenv, fetchFromGitHub, cmake, wxGTK30, gtk2, freetype, ftgl, sfml, fluidsynth, libmodplug, freeimage, p7zip, zlib, bzip2, mesa, glew, pkgconfig, curl, pcre, libpthreadstubs }:
+{ stdenv, fetchFromGitHub, cmake, wxGTK30, webkitgtk, gtk3, freetype, ftgl, sfml, fluidsynth, libmodplug, freeimage, p7zip, zlib, bzip2, mesa, glew, curl, pcre, libpthreadstubs }:
 
-stdenv.mkDerivation {
-  name = "slade-20170425";
+stdenv.mkDerivation rec {
+  name = "slade-${version}";
+  version = "3.1.4";
   src = fetchFromGitHub {
     owner = "sirjuddington";
     repo = "SLADE";
-    rev = "8d4e7f122a8d4f89247508ebf1abbff742a2082a";
-    sha256 = "0lflxzkh1dqdiasjpmkw3x7px39ag18szclkri6jp4h8kbxkl449";
+    rev = "${version}";
+    sha256 = "0icz6mv3k0dfl1bxabv1ffjjfzaarjl03z3bn6gh5a555qapxyi0";
   };
 
-  buildInputs = [ cmake wxGTK30 gtk2 freetype ftgl glew sfml fluidsynth libmodplug freeimage p7zip zlib bzip2 mesa pkgconfig curl pcre libpthreadstubs ];
+  nativeBuildDepends = [ cmake p7zip curl ];
+
+  buildInputs = [ wxGTK30 webkitgtk gtk3 freetype ftgl glew sfml fluidsynth libmodplug freeimage zlib bzip2 mesa pcre libpthreadstubs ];
 
   enableParallelBuilding = true;
+
+  cmakeFlags = [ "-DWITH_WXPATH=${wxGTK30}/bin" ];
 
   installPhase = ''
     mkdir -p $out/bin
