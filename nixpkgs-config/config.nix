@@ -44,7 +44,7 @@ in
     });
 
     # Derive package sets for the versions of GHC I'm interested in.
-    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc864;
+    myHaskellPackages = ownHaskellPackages pkgs.haskell.packages.ghc865;
     extension = sel: sup: { mkDerivation = drv: sup.mkDerivation (drv // { doHaddock = false; configureFlags = drv.configureFlags or [] ++ ["--enable-optimization=2"]; }); };
     hp = myHaskellPackages.extend(extension);
 
