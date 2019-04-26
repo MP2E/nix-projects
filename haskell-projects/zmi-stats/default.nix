@@ -1,6 +1,6 @@
 { mkDerivation, lib, base, bytestring, cassava, Chart, Chart-cairo
-, containers, discord-haskell, extra, mtl, sort, stdenv, temporary
-, text, time
+, containers, discord-haskell, extra, megaparsec, mtl
+, parser-combinators, sort, stdenv, temporary, text, time
 }:
 mkDerivation {
   pname = "zmi-stats";
@@ -10,7 +10,8 @@ mkDerivation {
   isExecutable = true;
   executableHaskellDepends = [
     base bytestring cassava Chart Chart-cairo containers
-    discord-haskell extra mtl sort temporary text time
+    discord-haskell extra megaparsec mtl parser-combinators sort
+    temporary text time
   ];
   homepage = "https://github.com/MP2E/zmi-stats";
   description = "Discord bot to compile ZMI Runner stats in OSRS";
