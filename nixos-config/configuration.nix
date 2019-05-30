@@ -152,6 +152,7 @@
   services.xserver.windowManager.default = "xmonad";
   services.xserver.desktopManager.default = "none";
   services.xserver.videoDrivers = [ "modesetting" ];
+  services.gnome3.gnome-keyring.enable = true;
   services.compton.enable = true;
   services.compton.backend = "glx";
   hardware.opengl.driSupport32Bit = true;
